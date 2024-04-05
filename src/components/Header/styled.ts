@@ -4,11 +4,11 @@ import Logo from "assets/svg/logo.svg";
 
 export const StyledHeader = styled.header`
   height: 103px;
-  background-color: ${({ theme }) => theme.colors.black};
 `;
 
 export const StyledHeaderContainer = styled.div`
   height: 100%;
+
   ${flexMixin};
 `;
 

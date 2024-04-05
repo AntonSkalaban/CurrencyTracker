@@ -13,6 +13,7 @@ export const baseTheme: Theme = {
     rgba(163, 220, 0, 1)`,
     white: "rgba(255, 255, 255, 1)",
     black: "rgba(3, 3, 4, 1)",
+    lightGrey: "rgba(217, 217, 217, 1)",
   },
 };
 
