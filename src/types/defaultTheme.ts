@@ -8,12 +8,6 @@ export enum ThemeEnum {
   dark = "dark",
 }
 
-// export interface DefaultColors extends Colors {
-//   bg: string;
-//   font: string;
-//   border: string;
-// }
-
 declare module "styled-components" {
   export interface DefaultTheme extends Theme {
     type: ThemeEnum;

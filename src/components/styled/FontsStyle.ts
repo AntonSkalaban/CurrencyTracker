@@ -7,7 +7,7 @@ export const FontStyles = createGlobalStyle`
 @font-face {
   font-family: 'Poppins';
   src: url(${PoppinsRegular}) format('truetype');
-  font-weight: 400;
+  font-weight: 300;
 }
 
 @font-face {
@@ -23,7 +23,10 @@ export const FontStyles = createGlobalStyle`
 }
 
 body {
-    font-family: Poppins;
-    background-color: ${({ theme }) => theme.colors.black};
+  font-family: "Poppins";
+  font-style: normal;
+  background-color: ${({ theme }) => theme.colors.black};
 }
+
+
 `;

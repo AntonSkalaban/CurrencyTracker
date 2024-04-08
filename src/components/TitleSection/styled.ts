@@ -3,7 +3,6 @@ import { greenGradientText } from "components/styled";
 import Logo from "assets/svg/logo-big.svg";
 
 export const StyledTitleSection = styled.section`
-  width: 1419px;
   height: 417px;
 
   background: linear-gradient(252.93deg, #121212 11.77%, rgba(36, 121, 64, 0) 91.12%);

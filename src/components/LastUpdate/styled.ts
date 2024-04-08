@@ -1,4 +1,5 @@
 import { keyframes, styled } from "styled-components";
+import { StyledP } from "components/styled";
 
 const flash = keyframes`
   0% {
@@ -14,11 +15,7 @@ const flash = keyframes`
   }
 `;
 
-export const StyledText = styled.p`
-  font-weight: 300;
-  font-size: 32px;
-  line-height: 42px;
-  color: ${({ theme }) => theme.colors.lightGrey};
+export const StyledText = styled(StyledP)`
   text-align: center;
 `;
 
@@ -29,7 +26,7 @@ export const StyledLastUpdateContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 24px;
-  margin-top: 60px;
+  margin-top: 62px;
 `;
 
 export const StyledBigSircle = styled.div`

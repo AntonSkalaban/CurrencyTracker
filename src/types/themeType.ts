@@ -3,6 +3,7 @@ export interface Colors {
   lightGrey: string;
   black: string;
   white: string;
+  grey: string;
 }
 
 export interface Theme {

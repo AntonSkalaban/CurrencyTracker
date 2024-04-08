@@ -6,8 +6,8 @@ export const NormalStyles = createGlobalStyle`
 *::after {
   box-sizing: border-box;
 }
-ul[class],
-ol[class] {
+ul,
+ol {
   padding: 0;
 }
 
@@ -17,7 +17,7 @@ h2,
 h3,
 h4,
 p,
-ul[class],
+ul,
 ol[class],
 li,
 figure,

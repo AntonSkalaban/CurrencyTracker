@@ -14,6 +14,7 @@ export const baseTheme: Theme = {
     white: "rgba(255, 255, 255, 1)",
     black: "rgba(3, 3, 4, 1)",
     lightGrey: "rgba(217, 217, 217, 1)",
+    grey: "rgba(32, 32, 37, 1)",
   },
 };
 

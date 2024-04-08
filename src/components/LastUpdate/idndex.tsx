@@ -12,7 +12,7 @@ export const LastUpdate: React.FC = () => {
       <StyledSmallCircle>
         {" "}
         <StyledBigSircle />
-      </StyledSmallCircle>
+      </StyledSmallCircle>{" "}
       <StyledText>Last updated at 11:59pm</StyledText>
     </StyledLastUpdateContainer>
   );
