@@ -1,0 +1,51 @@
+import styled from "styled-components";
+import { flexMixin } from "components/styled";
+
+export const SwitchInput = styled.input`
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  position: absolute;
+`;
+
+export const SwitchLabel = styled.label`
+  ${flexMixin}
+
+  cursor: pointer;
+  width: 50px;
+  height: 25px;
+  border-radius: 100px;
+  border: 1px solid white;
+
+  border-color: ${({ theme }) => theme.colors.white};
+  position: relative;
+  transition: background-color 0.2s;
+`;
+
+export const SwitchButton = styled.span`
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0px;
+  width: 25px;
+  height: 25px;
+  border-radius: 45px;
+  border: 1px solid white;
+  border-color: ${({ theme }) => theme.colors.white};
+  transition: 0.2s;
+  background: ${({ theme }) => theme.colors.black};
+  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+
+  ${SwitchInput}:checked + ${SwitchLabel} & {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+
+  ${SwitchLabel}:active & {
+    width: 45px;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.white};
+  }
+`;

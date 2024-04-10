@@ -30,13 +30,47 @@ export interface CandleData {
   trades_count: number;
 }
 
-export const fetchHistory = async (to = "USD", from = "EUR") => {
-  const { data } = await axios.get(
-    `https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_${from}_${to}/history?period_id=1DAY&time_start=2024-04-01T00:00:00.0000000Z`,
-    {
-      headers: { "X-CoinAPI-Key": "F11A11C0-DFD3-20BA-45B2-A3ECA93C6FF1" },
-    }
-  );
+const timeLineInstance = axios.create({
+  baseURL: "https://rest.coinapi.io/v1/ohlcv",
+  headers: {
+    "X-CoinAPI-Key": "F11A11C0-DFD3-20BA-45B2-A3ECA93C6FF1",
+  },
+});
 
-  return data as CandleData[];
+// export const fetchHistory = async (from = "EUR", to = "USD", period_id: "1DAY" | "1MOTH") => {
+//   const { data } = await axios.get(
+//    BITSTAMP_SPOT_${from}_${to}/history?period_id=${period_id}&time_start=`,
+//     {
+//       headers: { "X-CoinAPI-Key":  },
+//     }
+//   );
+
+//   return data as CandleData[];
+// };
+
+const defaultTimeStart = "T00:00:00";
+const defaultTimeEnd = "T23:59:59";
+// 2024-04-01
+
+export const fetchHistoryByDay = async (code: string, day: string) => {
+  const { data } = await timeLineInstance.get<CandleData[]>(`BITSTAMP_SPOT_${code}_USD/history`, {
+    params: {
+      period_id: "1DAY",
+      time_start: `${day}${defaultTimeStart}`,
+      time_end: `${day}${defaultTimeEnd}`,
+    },
+  });
+
+  return data;
+};
+
+export const fetchHistoryByMonth = async (code: string, day: string) => {
+  const { data } = await timeLineInstance.get<CandleData[]>(`BITSTAMP_SPOT_${code}_USD/history`, {
+    params: {
+      period_id: "1DAY",
+      time_start: `${day}${defaultTimeStart}`,
+    },
+  });
+
+  return data;
 };

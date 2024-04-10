@@ -1,21 +1,34 @@
 import { styled } from "styled-components";
+import { flexMixin } from "components/styled";
 
 export const StyledDropdownConainer = styled.div`
+  min-width: 120px;
+  width: fit-content;
   position: relative;
+
+  user-select: none;
 `;
 
 export const StyledDropdownHeader = styled.div`
-  width: 120px;
+  width: 100%;
   height: 40px;
   padding: 0 10px;
 
-  /* display: flex;
-  border-radius: 8px;
-  border: 1px solid rgba(71, 71, 71, 1); */
+  ${flexMixin}
+  gap: 20px;
 `;
 
+export const StyledDropdownText = styled.p`
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 45px;
+
+  color: #ffffff;
+`;
 export const StyledDropdownBody = styled.div`
   width: 100%;
+  height: 340px;
+  overflow: scroll;
   position: absolute;
   top: 40px;
 

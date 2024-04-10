@@ -78,8 +78,7 @@ export const CardModalContent: React.FC = () => {
         <StyledP>{code} = </StyledP>
         <StyledP>{convertedAmount.toFixed(2)}</StyledP>
         <Dropdown
-          name={"cyrrency"}
-          options={defQuotesData.map((el) => el.code)}
+          options={defQuotesData.map((el) => ({ name: el.code, value: el.code }))}
           defValue={selectCurCode}
           onChange={hanldeCurrencyChange}
         />

@@ -1,24 +1,24 @@
 import { useState } from "react";
-import { StyledP } from "components/styled";
 import { useClickOutside } from "utils/hooks/useClickOutside";
+import Vector from "assets/svg/vector.svg";
 import {
   StyledDropdownBody,
   StyledDropdownConainer,
   StyledDropdownHeader,
+  StyledDropdownText,
   StyledInputRadio,
   StyledLabel,
   StyledOption,
 } from "./styled";
 
 interface DropdownProps {
-  name: string;
-  options: string[];
+  options: { name: string; value: string }[];
   defValue?: string;
   onChange: (value: string) => void;
 }
-export const Dropdown: React.FC<DropdownProps> = ({ name, options, onChange, defValue }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ options, onChange, defValue }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectValue, setSelectValue] = useState(defValue || options[0]);
+  const [selectValue, setSelectValue] = useState(defValue || options[0].name);
   const handleClick = () => {
     setIsOpen((prev) => !prev);
   };
@@ -26,30 +26,30 @@ export const Dropdown: React.FC<DropdownProps> = ({ name, options, onChange, def
   const ref = useClickOutside(() => setIsOpen(false));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    onChange(value);
-    setSelectValue(value);
+    const target = e.target;
+    onChange(target.value);
+    setSelectValue(target.name);
+    setIsOpen(false);
   };
 
   return (
     <StyledDropdownConainer ref={ref}>
       <StyledDropdownHeader onClick={handleClick}>
-        <StyledP>
-          {selectValue} <span>^</span>
-        </StyledP>
+        <StyledDropdownText>{selectValue}</StyledDropdownText>
+        <Vector width={16} height={16} />
       </StyledDropdownHeader>
       {isOpen && (
         <StyledDropdownBody>
           <ul>
-            {options.map((option) => {
+            {options.map(({ name, value }) => {
               return (
-                <StyledOption key={option}>
+                <StyledOption key={name}>
                   <StyledLabel>
-                    {option}
+                    {name}
                     <StyledInputRadio
                       type="radio"
                       name={name}
-                      value={option}
+                      value={value}
                       onChange={handleChange}
                     />
                   </StyledLabel>
