@@ -10,9 +10,10 @@ import {
   Tooltip,
 } from "chart.js";
 import { Title2 } from "components/styled";
-import { CandleData, fetchHistoryByDay, fetchHistoryByMonth } from "utils/api/api";
+import { fetchHistoryByDay, fetchHistoryByMonth } from "utils/api/api";
 import { LocalStorage } from "utils/LocalStorage";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
+import { CandleData } from "types";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
