@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { CardModalSlice } from "./slice";
+import { CardModalSlice, SearchCurrencySlice } from "./slice";
 
 export const store = configureStore({
   reducer: {
     cardModal: CardModalSlice,
+    searchCurrency: SearchCurrencySlice,
   },
 });
 

@@ -7,8 +7,8 @@ import { getModalData } from "store/slice";
 import { defQuotesData } from "constants/cardsData";
 import { quotesIcons } from "constants/icons";
 import { getRate } from "utils/api/api";
+import { cache } from "utils/cache";
 import { useDebounce } from "utils/hooks";
-import { LocalStorage } from "utils/LocalStorage";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
 import { StyledLogoContainer, StyledModalContentContainer } from "./styled";
 
@@ -39,7 +39,7 @@ export const CardModalContent: React.FC = () => {
 
         const { result } = await getRate(code, selectCurCode);
 
-        LocalStorage.setObj<ConvertedData>(convertedCurrencyes, {
+        cache.setObj<ConvertedData>(convertedCurrencyes, {
           rate: result.convertedAmount,
           lastUpdate: new Date(),
         });
@@ -54,7 +54,7 @@ export const CardModalContent: React.FC = () => {
 
     if (shouldDataUpdate(convertedCurrencyes)) getData();
     else {
-      const storedRate = LocalStorage.getObj<ConvertedData>(convertedCurrencyes)?.rate as number;
+      const storedRate = cache.getObj<ConvertedData>(convertedCurrencyes)?.rate as number;
       setRate(storedRate * +debouncedAmount);
     }
   }, [selectCurCode, debouncedAmount, code, convertedCurrencyes]);

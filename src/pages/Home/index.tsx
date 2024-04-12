@@ -6,7 +6,7 @@ import { Modal } from "components/Modal";
 import { Title2 } from "components/styled";
 import { getModalStatus, toggleModal } from "store/slice";
 import { defQuotesData, defStocksData } from "constants/cardsData";
-import { LocalStorage, shouldDataUpdate, transformResponse } from "utils";
+import { cache, shouldDataUpdate, transformResponse } from "utils";
 import { getRate } from "utils/api/api";
 import { ConvertResponce } from "types";
 
@@ -17,9 +17,7 @@ interface CyrrencyData {
 
 export const Home: React.FC = () => {
   const dispatch = useDispatch();
-  const [quotesRate, setQuotesRates] = useState(
-    LocalStorage.getObj<CyrrencyData>("quotes")?.data || []
-  );
+  const [quotesRate, setQuotesRates] = useState(cache.getObj<CyrrencyData>("quotes")?.data || []);
   const [isFetching, setIsFetching] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -37,7 +35,7 @@ export const Home: React.FC = () => {
         const promises = defQuotesData.map(({ code }) => getRate(code, "BRL"));
         const res = await Promise.all(promises);
 
-        LocalStorage.setObj<CyrrencyData>("quotes", { data: res, lastUpdate: new Date() });
+        cache.setObj<CyrrencyData>("quotes", { data: res, lastUpdate: new Date() });
 
         setQuotesRates(res);
       } catch (e) {

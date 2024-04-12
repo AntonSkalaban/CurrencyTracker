@@ -1,4 +1,4 @@
-export class LocalStorage {
+export class cache {
   static getObj<T>(key: string): T | null {
     const val = localStorage.getItem(key);
     return val ? JSON.parse(val) : null;

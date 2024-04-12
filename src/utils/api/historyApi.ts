@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CandleData, ConvertResponce } from "types";
+import { CandleData } from "types";
 
 const timeLineInstance = axios.create({
   baseURL: "https://rest.coinapi.io/v1/ohlcv",

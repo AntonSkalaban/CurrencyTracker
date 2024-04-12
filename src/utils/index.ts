@@ -1,4 +1,4 @@
 export * from "./isDateExpired";
 export * from "./shouldDataUpdate";
-export * from "./LocalStorage";
+export * from "./cache";
 export * from "./transformResponce";

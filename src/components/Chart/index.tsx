@@ -11,7 +11,7 @@ import {
 } from "chart.js";
 import { Title2 } from "components/styled";
 import { fetchHistoryByDay, fetchHistoryByMonth } from "utils/api/api";
-import { LocalStorage } from "utils/LocalStorage";
+import { cache } from "utils/cache";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
 import { CandleData } from "types";
 
@@ -31,9 +31,9 @@ interface ChartProps {
 export class Chart extends React.Component<ChartProps> {
   state = {
     candlesData:
-      LocalStorage.getObj<HistoryData>(
+      cache.getObj<HistoryData>(
         this.props.curCode + "-" + this.props.period + "-" + this.props.date
-      )?.data || ([] as CandleData[]),
+      )?.data || [],
     isError: false,
     isFetching: false,
   };
@@ -52,7 +52,7 @@ export class Chart extends React.Component<ChartProps> {
 
       this.setState({ candlesData: data });
 
-      LocalStorage.setObj(currCode + "-" + periodType + "-" + date, {
+      cache.setObj(currCode + "-" + periodType + "-" + date, {
         data,
         lastUpdate: new Date(),
       });
@@ -69,7 +69,7 @@ export class Chart extends React.Component<ChartProps> {
       this.getGraphData(this.props.curCode, this.props.period, this.props.date);
     else {
       this.setState({
-        candlesData: LocalStorage.getObj<HistoryData>(
+        candlesData: cache.getObj<HistoryData>(
           this.props.curCode + "-" + this.props.period + "-" + this.props.date
         )?.data,
       });
@@ -86,7 +86,7 @@ export class Chart extends React.Component<ChartProps> {
         this.getGraphData(this.props.curCode, this.props.period, this.props.date);
       } else {
         this.setState({
-          candlesData: LocalStorage.getObj<HistoryData>(
+          candlesData: cache.getObj<HistoryData>(
             this.props.curCode + "-" + this.props.period + "-" + this.props.date
           )?.data,
         });
