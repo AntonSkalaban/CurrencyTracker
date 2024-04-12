@@ -1,5 +1,5 @@
 import React from "react";
-import { defQuotesData } from "constants/cardsData";
+import { getSuggestionsValues } from "utils/helpers";
 import { StyledSearchSuggestionsContainer, StyledSearchSuggestionsLi } from "./styled";
 
 interface SearchSuggestionsProps {
@@ -12,22 +12,18 @@ interface SearchSuggestionsState {
   suggestionData: string[];
 }
 
-export class SearchSuggestions extends React.Component<SearchSuggestionsProps> {
-  state: SearchSuggestionsState = { isOpen: false, suggestionData: [] };
-
-  getSuggestionsData = (value: string) => {
-    return defQuotesData.reduce((acc, val) => {
-      if (val.code.includes(value.toUpperCase())) acc.push(val.code);
-      return acc;
-    }, [] as string[]);
-  };
+export class SearchSuggestions extends React.Component<
+  SearchSuggestionsProps,
+  SearchSuggestionsState
+> {
+  state = { isOpen: false, suggestionData: [] };
 
   componentDidUpdate(prevProps: Readonly<SearchSuggestionsProps>) {
     const { value } = this.props;
     if (prevProps.value === value) return;
 
     this.setState({ isOpen: !!value });
-    if (value) this.setState({ suggestionData: this.getSuggestionsData(value) });
+    if (value) this.setState({ suggestionData: getSuggestionsValues(value) });
   }
 
   render() {

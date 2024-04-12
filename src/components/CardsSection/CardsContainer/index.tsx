@@ -1,5 +1,5 @@
 import { CardData } from "types/card";
-import { Card } from "..";
+import { Card } from "../..";
 import { StyledCardsContainer } from "./styled";
 
 interface CardsContainerProps {

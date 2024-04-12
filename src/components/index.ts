@@ -4,4 +4,4 @@ export * from "./ThemeToggle";
 export * from "./UI";
 export * from "./TitleSection";
 export * from "./CardsSection";
-export * from "./Card";
+export * from "./CardsSection/CardsContainer/Card";

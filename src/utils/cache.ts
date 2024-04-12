@@ -5,6 +5,6 @@ export class cache {
   }
 
   static setObj<T>(key: string, val: T) {
-    localStorage.setItem(key, JSON.stringify(val));
+    localStorage.setItem(key, JSON.stringify({ data: val, lastUpdate: new Date() }));
   }
 }

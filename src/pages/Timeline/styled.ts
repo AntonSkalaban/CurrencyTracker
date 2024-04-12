@@ -6,12 +6,13 @@ export const DropdownsContainer = styled.div`
   margin: 20px 0;
 `;
 
-export const StyledePopUpRoot = styled.div`
-  position: absolute;
+// const newLocal = styled.div`
+//   position: absolute;
 
-  left: 50%;
-  top: 20px;
-  width: 100px;
-  height: 50px;
-  background-color: "pink";
-`;
+//   left: 50%;
+//   top: 20px;
+//   width: 100px;
+//   height: 50px;
+//   background-color: "pink";
+// `;
+// export const StyledePopUpRoot = newLocal;

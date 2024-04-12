@@ -1,4 +1,4 @@
-export interface CandleData {
+export interface HistoryData {
   time_period_start: string;
   time_period_end: string;
   time_open: string;

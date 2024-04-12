@@ -1,5 +1,5 @@
 import React from "react";
-import { NEWElasticSearch } from "components/ElasticSearch";
+import { ElasticSearch } from "./ElasticSearch";
 import { StyledSearchContainer, StyledText } from "./styled";
 
 export class SearchContainer extends React.Component {
@@ -7,7 +7,7 @@ export class SearchContainer extends React.Component {
     return (
       <StyledSearchContainer>
         <StyledText>Search currency in the bank</StyledText>
-        <NEWElasticSearch />
+        <ElasticSearch />
       </StyledSearchContainer>
     );
   }

@@ -27,7 +27,7 @@ export class PopupObserver implements Observer<string> {
   timerId: NodeJS.Timeout | null = null;
 
   update(state: string): void {
-    if (state !== "MONTH") return;
+    if (state !== "MONTH" || this.timerId) return;
 
     const popUpElement = React.createElement(PopUp, { message: "hello" });
 
@@ -36,7 +36,7 @@ export class PopupObserver implements Observer<string> {
 
     this.timerId = setTimeout(() => {
       this.timerId = null;
-      rootEl?.unmount();
+      rootEl.unmount();
     }, 3000);
   }
 }

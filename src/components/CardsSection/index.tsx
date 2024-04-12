@@ -1,4 +1,4 @@
-import { CardsContainer } from "components/CardsContainer";
+import { CardsContainer } from "components/CardsSection/CardsContainer";
 import { CardData } from "types/card";
 import { Wrapper } from "..";
 import { StyledCardsSection, StyledCardsSectionHeader, StyledCardsSectionTitle } from "./styled";

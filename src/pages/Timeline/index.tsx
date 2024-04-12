@@ -3,11 +3,7 @@ import { Chart } from "components/Chart";
 import { Dropdown } from "components/Dropdown";
 import { Wrapper } from "components/UI";
 import { defQuotesData } from "constants/cardsData";
-import {
-  formatDateToDayMonthFormat,
-  getAllDatesUntilToday,
-  subtractOneMonthFromDate,
-} from "utils/helpers/subtractOneMonthFromDate";
+import { dateController } from "utils/helpers/dateController";
 import { PopupObserver, Subject } from "utils/observer";
 import { DropdownsContainer } from "./styled";
 
@@ -17,11 +13,11 @@ interface TimelineState {
   startDate: string;
 }
 export class Timeline extends React.Component {
-  state = {
+  state: TimelineState = {
     curCode: "EUR",
     period: "MONTH",
-    startDate: subtractOneMonthFromDate(),
-  } as TimelineState;
+    startDate: dateController.subtractOneMonthFromNow(),
+  };
 
   subject = new Subject<string>();
 
@@ -29,7 +25,6 @@ export class Timeline extends React.Component {
 
   componentDidMount() {
     this.subject.addObserver(this.popupObserver);
-
     this.subject.notify(this.state.period);
   }
 
@@ -38,7 +33,9 @@ export class Timeline extends React.Component {
   }
 
   componentDidUpdate(prevState: Readonly<{ period: string }>) {
-    if (prevState.period !== this.state.period) this.subject.notify(this.state.period);
+    if (prevState.period !== this.state.period) {
+      this.subject.notify(this.state.period);
+    }
   }
 
   handleCurChange = (val: string) => {
@@ -55,9 +52,9 @@ export class Timeline extends React.Component {
 
     const currencyOptions = defQuotesData.map((el) => ({ name: el.code, value: el.code }));
     const dateOptions = [
-      { name: "all month", value: "MONTH" + "%" + subtractOneMonthFromDate() },
-      ...getAllDatesUntilToday(subtractOneMonthFromDate()).map((el) => ({
-        name: formatDateToDayMonthFormat(el),
+      { name: "all month", value: "MONTH" + "%" + dateController.subtractOneMonthFromNow() },
+      ...dateController.getDatesList(dateController.subtractOneMonthFromNow()).map((el) => ({
+        name: dateController.toDDMonth(el),
         value: "DAY" + "%" + el,
       })),
     ];

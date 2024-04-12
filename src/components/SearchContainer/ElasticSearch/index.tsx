@@ -16,8 +16,8 @@ interface ElasticSearchProps {
   onCurrencySelect: (value: string) => void;
 }
 
-export class ElasticSearch extends React.Component<ElasticSearchProps> {
-  state: ElasticSearchState = { value: "", debouncedValue: "", cuurency: "" };
+export class DefaultElasticSearch extends React.Component<ElasticSearchProps, ElasticSearchState> {
+  state = { value: "", debouncedValue: "", cuurency: "" };
 
   timer: NodeJS.Timeout | null = null;
 
@@ -41,7 +41,7 @@ export class ElasticSearch extends React.Component<ElasticSearchProps> {
 
   componentDidUpdate(
     _prevProps: Readonly<ElasticSearchProps>,
-    prevState: Readonly<ElasticSearchState>
+    prevState: Readonly<ElasticSearchState>,
   ): void {
     if (this.state.cuurency !== prevState.cuurency) {
       this.props.onCurrencySelect(this.state.cuurency);
@@ -80,4 +80,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   };
 };
 
-export const NEWElasticSearch = connect(null, mapDispatchToProps)(ElasticSearch);
+export const ElasticSearch = connect(null, mapDispatchToProps)(DefaultElasticSearch);

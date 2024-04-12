@@ -10,17 +10,13 @@ import {
   Tooltip,
 } from "chart.js";
 import { Title2 } from "components/styled";
-import { fetchHistoryByDay, fetchHistoryByMonth } from "utils/api/api";
+import { fetchHistory } from "utils/api/historyApi";
 import { cache } from "utils/cache";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
-import { CandleData } from "types";
+import { HistoryCache } from "types";
+import { getChartData, options } from "./constants";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
-
-interface HistoryData {
-  data: CandleData[];
-  lastUpdate: Date;
-}
 
 interface ChartProps {
   curCode: string;
@@ -29,33 +25,26 @@ interface ChartProps {
 }
 
 export class Chart extends React.Component<ChartProps> {
+  key = this.props.curCode + "-" + this.props.period + "-" + this.props.date;
+
   state = {
-    candlesData:
-      cache.getObj<HistoryData>(
-        this.props.curCode + "-" + this.props.period + "-" + this.props.date
-      )?.data || [],
+    data: cache.getObj<HistoryCache>(this.key)?.data || [],
     isError: false,
     isFetching: false,
   };
 
-  getGraphData = async (currCode: string, periodType: string, date: string) => {
+  getGraphData = async () => {
+    const { curCode, period, date } = this.props;
     try {
       this.setState({
         isError: false,
         isFetching: true,
       });
 
-      const data =
-        this.props.period === "DAY"
-          ? await fetchHistoryByDay(currCode, date)
-          : await fetchHistoryByMonth(currCode, date);
+      const data = await fetchHistory(curCode, date, period);
+      this.setState({ data });
 
-      this.setState({ candlesData: data });
-
-      cache.setObj(currCode + "-" + periodType + "-" + date, {
-        data,
-        lastUpdate: new Date(),
-      });
+      cache.setObj(this.key, data);
     } catch (e) {
       this.setState({ isError: true });
     } finally {
@@ -63,17 +52,19 @@ export class Chart extends React.Component<ChartProps> {
     }
   };
 
-  componentDidMount() {
-    //console.log(this.props.curCode + "-" + this.props.period + "-" + this.props.date);
-    if (shouldDataUpdate(this.props.curCode + "-" + this.props.period + "-" + this.props.date))
-      this.getGraphData(this.props.curCode, this.props.period, this.props.date);
+  updateData() {
+    this.key = this.props.curCode + "-" + this.props.period + "-" + this.props.date;
+    if (shouldDataUpdate(this.key)) this.getGraphData();
     else {
       this.setState({
-        candlesData: cache.getObj<HistoryData>(
-          this.props.curCode + "-" + this.props.period + "-" + this.props.date
-        )?.data,
+        isError: false,
+        data: cache.getObj<HistoryCache>(this.key)?.data,
       });
     }
+  }
+
+  componentDidMount() {
+    this.updateData();
   }
 
   componentDidUpdate(prevProps: Readonly<ChartProps>): void {
@@ -81,52 +72,12 @@ export class Chart extends React.Component<ChartProps> {
       prevProps.curCode !== this.props.curCode ||
       prevProps.period !== this.props.period ||
       prevProps.date !== this.props.date
-    ) {
-      if (shouldDataUpdate(this.props.curCode + "-" + this.props.period + "-" + this.props.date)) {
-        this.getGraphData(this.props.curCode, this.props.period, this.props.date);
-      } else {
-        this.setState({
-          candlesData: cache.getObj<HistoryData>(
-            this.props.curCode + "-" + this.props.period + "-" + this.props.date
-          )?.data,
-        });
-      }
-    }
+    )
+      this.updateData();
   }
 
   render() {
-    const { candlesData, isFetching, isError } = this.state;
-
-    const dataArr = candlesData.map((data) => [data.price_open, data.price_close]);
-    const colors = dataArr.map((value) => (value[0] <= value[1] ? "green" : "red"));
-    const labels = candlesData.map((data) => {
-      const date = new Date(data.time_period_start);
-      const day = ("0" + date.getDate()).slice(-2);
-      const month = ("0" + (date.getMonth() + 1)).slice(-2);
-
-      return `${day}.${month}`;
-    });
-
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: "Financial Data",
-          data: dataArr,
-          borderColor: "black",
-          backgroundColor: colors,
-        },
-      ],
-    };
-
-    const options = {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: false,
-        },
-      },
-    };
+    const { data, isFetching, isError } = this.state;
 
     if (isError) {
       return <Title2>Error..</Title2>;
@@ -134,9 +85,11 @@ export class Chart extends React.Component<ChartProps> {
 
     if (isFetching) return <Title2>Fetching..</Title2>;
 
+    const chartData = getChartData(data);
+
     return (
       <>
-        <Bar options={options} data={data} />;
+        <Bar options={options} data={chartData} />;
       </>
     );
   }

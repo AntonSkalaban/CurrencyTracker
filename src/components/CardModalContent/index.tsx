@@ -10,12 +10,8 @@ import { getRate } from "utils/api/api";
 import { cache } from "utils/cache";
 import { useDebounce } from "utils/hooks";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
+import { RateCache } from "types/cache";
 import { StyledLogoContainer, StyledModalContentContainer } from "./styled";
-
-interface ConvertedData {
-  rate: number;
-  lastUpdate: Date;
-}
 
 export const CardModalContent: React.FC = () => {
   const { title, code } = useSelector(getModalData);
@@ -39,10 +35,7 @@ export const CardModalContent: React.FC = () => {
 
         const { result } = await getRate(code, selectCurCode);
 
-        cache.setObj<ConvertedData>(convertedCurrencyes, {
-          rate: result.convertedAmount,
-          lastUpdate: new Date(),
-        });
+        cache.setObj<number>(convertedCurrencyes, result.convertedAmount);
 
         setRate(result.convertedAmount * +debouncedAmount);
       } catch (e) {
@@ -54,7 +47,8 @@ export const CardModalContent: React.FC = () => {
 
     if (shouldDataUpdate(convertedCurrencyes)) getData();
     else {
-      const storedRate = cache.getObj<ConvertedData>(convertedCurrencyes)?.rate as number;
+      const storedRate = cache.getObj<RateCache>(convertedCurrencyes)?.data;
+      if (!storedRate) return;
       setRate(storedRate * +debouncedAmount);
     }
   }, [selectCurCode, debouncedAmount, code, convertedCurrencyes]);

@@ -20,12 +20,11 @@ export const Modal: React.FC<ModalProps> = ({ children, close }) => {
           <StyledModalContainer>
             <StyledCloseBtn onClick={close}>
               <p>X</p>
-              {/* <ModalCloseIcon /> */}
             </StyledCloseBtn>
             <StyledModalContent>{children}</StyledModalContent>
           </StyledModalContainer>
         </>,
-        document.body
+        document.body,
       )}
     </>
   );
