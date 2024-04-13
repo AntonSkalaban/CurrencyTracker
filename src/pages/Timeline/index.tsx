@@ -11,12 +11,14 @@ interface TimelineState {
   curCode: string;
   period: string;
   startDate: string;
+  minValue: string;
 }
 export class Timeline extends React.Component {
   state: TimelineState = {
     curCode: "EUR",
     period: "MONTH",
     startDate: dateController.subtractOneMonthFromNow(),
+    minValue: "",
   };
 
   handleCurChange = (val: string) => {
@@ -28,7 +30,9 @@ export class Timeline extends React.Component {
     this.setState({ period, startDate });
   };
 
-  handleNumInputChange = (val: string) => {};
+  handleNumInputChange = (val: string) => {
+    return val;
+  };
 
   render() {
     const { curCode, period, startDate } = this.state;
