@@ -4,7 +4,6 @@ import { Dropdown } from "components/Dropdown";
 import { Wrapper } from "components/UI";
 import { defQuotesData } from "constants/cardsData";
 import { dateController } from "utils/helpers/dateController";
-import { PopupObserver, Subject } from "utils/observer";
 import { DropdownsContainer } from "./styled";
 
 interface TimelineState {
@@ -18,25 +17,6 @@ export class Timeline extends React.Component {
     period: "MONTH",
     startDate: dateController.subtractOneMonthFromNow(),
   };
-
-  subject = new Subject<string>();
-
-  popupObserver = new PopupObserver();
-
-  componentDidMount() {
-    this.subject.addObserver(this.popupObserver);
-    this.subject.notify(this.state.period);
-  }
-
-  componentWillUnmount() {
-    this.subject.removeObserver(this.popupObserver);
-  }
-
-  componentDidUpdate(prevState: Readonly<{ period: string }>) {
-    if (prevState.period !== this.state.period) {
-      this.subject.notify(this.state.period);
-    }
-  }
 
   handleCurChange = (val: string) => {
     this.setState({ curCode: val });

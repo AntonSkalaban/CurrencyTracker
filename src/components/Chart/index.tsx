@@ -12,8 +12,10 @@ import {
 import { Title2 } from "components/styled";
 import { fetchHistory } from "utils/api/historyApi";
 import { cache } from "utils/cache";
+import { Subject } from "utils/observer";
+import { PopupObserver } from "utils/PopUpObserver";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
-import { HistoryCache } from "types";
+import { HistoryCache, HistoryData } from "types";
 import { getChartData, options } from "./constants";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -24,7 +26,12 @@ interface ChartProps {
   date: string;
 }
 
-export class Chart extends React.Component<ChartProps> {
+interface ChartState {
+  data: HistoryData[];
+  isError: boolean;
+  isFetching: boolean;
+}
+export class Chart extends React.Component<ChartProps, ChartState> {
   key = this.props.curCode + "-" + this.props.period + "-" + this.props.date;
 
   state = {
@@ -32,6 +39,10 @@ export class Chart extends React.Component<ChartProps> {
     isError: false,
     isFetching: false,
   };
+
+  subject = new Subject<string>();
+
+  popupObserver = new PopupObserver();
 
   getGraphData = async () => {
     const { curCode, period, date } = this.props;
@@ -58,28 +69,43 @@ export class Chart extends React.Component<ChartProps> {
     else {
       this.setState({
         isError: false,
-        data: cache.getObj<HistoryCache>(this.key)?.data,
+        data: cache.getObj<HistoryCache>(this.key)?.data || [],
       });
     }
   }
 
-  componentDidMount() {
-    this.updateData();
+  updateObserver() {
+    if (!this.state.isFetching && !this.state.isError) {
+      this.popupObserver.update(this.props.period);
+    }
   }
 
-  componentDidUpdate(prevProps: Readonly<ChartProps>): void {
+  componentDidMount() {
+    this.subject.addObserver(this.popupObserver);
+    this.updateData();
+    this.updateObserver();
+  }
+
+  componentDidUpdate(prevProps: Readonly<ChartProps>, prevState: Readonly<ChartState>): void {
     if (
       prevProps.curCode !== this.props.curCode ||
       prevProps.period !== this.props.period ||
       prevProps.date !== this.props.date
-    )
+    ) {
       this.updateData();
+    }
+    if (prevState.isError !== this.state.isError || prevState.isFetching !== this.state.isFetching)
+      this.updateObserver();
+  }
+
+  componentWillUnmount() {
+    this.subject.removeObserver(this.popupObserver);
   }
 
   render() {
     const { data, isFetching, isError } = this.state;
 
-    if (isError) {
+    if (isError || !data.length) {
       return <Title2>Error..</Title2>;
     }
 
