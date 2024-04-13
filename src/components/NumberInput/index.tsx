@@ -1,18 +1,16 @@
-import { useState } from "react";
 import { StyledNumberInput } from "./styled";
 
 interface NumberInputProps {
-  defVal?: string;
+  name: string;
+  value: string;
   onChange: (val: string) => void;
 }
-export const NumberInput: React.FC<NumberInputProps> = ({ defVal, onChange }) => {
-  const [value, setValue] = useState(defVal || "");
-
+export const NumberInput: React.FC<NumberInputProps> = ({ name, value, onChange }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (val.length > 5) return;
     const value = val.replace(/\D/g, "");
-    setValue(value);
+
     onChange(value);
   };
 
