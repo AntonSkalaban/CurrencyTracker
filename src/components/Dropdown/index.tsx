@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useClickOutside } from "utils/hooks/useClickOutside";
-import Vector from "assets/svg/vector.svg";
 import {
   StyledDropdownBody,
   StyledDropdownConainer,
   StyledDropdownHeader,
   StyledDropdownText,
+  StyledDropdownVector,
   StyledInputRadio,
   StyledLabel,
   StyledOption,
@@ -36,7 +36,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ options, onChange, defValue 
     <StyledDropdownConainer ref={ref}>
       <StyledDropdownHeader onClick={handleClick}>
         <StyledDropdownText>{selectValue}</StyledDropdownText>
-        <Vector width={16} height={16} />
+        <StyledDropdownVector />
       </StyledDropdownHeader>
       {isOpen && (
         <StyledDropdownBody>

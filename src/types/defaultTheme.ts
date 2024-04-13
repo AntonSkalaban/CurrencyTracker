@@ -1,5 +1,4 @@
-import { Theme } from "./themeType";
-import { Colors } from "./themeType";
+import { Colors, Theme } from "./theme";
 
 import "styled-components";
 
@@ -8,9 +7,15 @@ export enum ThemeEnum {
   dark = "dark",
 }
 
+export interface DefaultColors extends Colors {
+  bgMain: string;
+  bgSecondary: string;
+  fontMain: string;
+  fontSecondary: string;
+}
 declare module "styled-components" {
   export interface DefaultTheme extends Theme {
     type: ThemeEnum;
-    colors: Colors;
+    colors: DefaultColors;
   }
 }

@@ -115,7 +115,7 @@ export class Chart extends React.Component<ChartProps, ChartState> {
 
     return (
       <>
-        <Bar options={options} data={chartData} />;
+        <Bar options={options} data={chartData} />
       </>
     );
   }

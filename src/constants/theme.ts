@@ -1,10 +1,5 @@
 import { DefaultTheme } from "styled-components";
-import { Theme } from "types/themeType";
-
-export enum ThemeEnum {
-  light = "light",
-  dark = "dark",
-}
+import { Theme, ThemeEnum } from "types";
 
 export const baseTheme: Theme = {
   colors: {
@@ -24,6 +19,10 @@ export const lightTheme: DefaultTheme = {
 
   colors: {
     ...baseTheme.colors,
+    fontMain: baseTheme.colors.black,
+    fontSecondary: baseTheme.colors.grey,
+    bgMain: baseTheme.colors.white,
+    bgSecondary: baseTheme.colors.lightGrey,
   },
 };
 
@@ -33,5 +32,10 @@ export const darkTheme: DefaultTheme = {
 
   colors: {
     ...baseTheme.colors,
+
+    fontMain: baseTheme.colors.white,
+    fontSecondary: baseTheme.colors.lightGrey,
+    bgMain: baseTheme.colors.black,
+    bgSecondary: baseTheme.colors.grey,
   },
 };

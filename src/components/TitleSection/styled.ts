@@ -5,11 +5,15 @@ import Logo from "assets/svg/logo-big.svg";
 export const StyledTitleSection = styled.section`
   height: 417px;
 
-  background: linear-gradient(252.93deg, #121212 11.77%, rgba(36, 121, 64, 0) 91.12%);
+  background: linear-gradient(
+    66deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(36, 121, 64, 0.3) 52%,
+    rgba(0, 0, 0, 1) 100%
+  );
 
   margin: 0 auto;
 `;
-
 export const StyledContentContainer = styled.div`
   display: flex;
   filter: drop-shadow(0px 3.16353px 3.16353px rgba(0, 0, 0, 0.5));
@@ -60,6 +64,6 @@ export const StyledSubtitle = styled.p`
   font-weight: 300;
   font-size: 25px;
   line-height: 46px;
-  color: ${({ theme }) => theme.colors.lightGrey};
+  color: ${({ theme }) => theme.colors.fontSecondary};
   text-align: center;
 `;

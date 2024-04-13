@@ -21,12 +21,4 @@ export const FontStyles = createGlobalStyle`
   src: url(${PoppinsMedium}) format('truetype');
   font-weight: 600;
 }
-
-body {
-  font-family: "Poppins";
-  font-style: normal;
-  background-color: ${({ theme }) => theme.colors.black};
-}
-
-
 `;

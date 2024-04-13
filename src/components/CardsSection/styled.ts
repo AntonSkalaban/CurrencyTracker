@@ -7,7 +7,7 @@ export const StyledCardsSection = styled.section`
 
 export const StyledCardsSectionHeader = styled.div`
   width: 520px;
-  border-bottom: 2px solid rgba(71, 71, 71, 1);
+  border-bottom: 2px solid ${({ theme }) => theme.colors.bgSecondary};
   padding-bottom: 25px;
 `;
 

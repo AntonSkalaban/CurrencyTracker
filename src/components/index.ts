@@ -5,3 +5,4 @@ export * from "./UI";
 export * from "./TitleSection";
 export * from "./CardsSection";
 export * from "./CardsSection/CardsContainer/Card";
+export * from "../constants/theme";

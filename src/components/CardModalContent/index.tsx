@@ -70,7 +70,7 @@ export const CardModalContent: React.FC = () => {
       <div style={{ display: "flex" }}>
         <NumberInput defVal={amount} onChange={hanldeAmountChange} />
         <StyledP>{code} = </StyledP>
-        <StyledP>{convertedAmount.toFixed(2)}</StyledP>
+        <StyledP> {convertedAmount.toFixed(2)}</StyledP>
         <Dropdown
           options={defQuotesData.map((el) => ({ name: el.code, value: el.code }))}
           defValue={selectCurCode}

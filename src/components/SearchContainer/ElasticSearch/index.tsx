@@ -2,9 +2,13 @@ import React, { ChangeEvent } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setCurrencyValue } from "store/slice";
-import SearchIcon from "assets/svg/search.svg";
 import { SearchSuggestions } from "./SearchSuggestions";
-import { ElasticSearchContainer, StyledInput, StyledSearchButton } from "./styled";
+import {
+  ElasticSearchContainer,
+  StyledInput,
+  StyledSearchButton,
+  StyledSearchIcon,
+} from "./styled";
 
 interface ElasticSearchState {
   value: string;
@@ -61,7 +65,7 @@ export class DefaultElasticSearch extends React.Component<ElasticSearchProps, El
           onKeyDown={this.hanldeKeyDown}
         />
         <StyledSearchButton tabIndex={0} onClick={this.handleClick}>
-          <SearchIcon width={"100%"} height={"100%"} />
+          <StyledSearchIcon />
         </StyledSearchButton>
         <SearchSuggestions
           value={debouncedValue}

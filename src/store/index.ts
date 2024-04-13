@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { CardModalSlice, SearchCurrencySlice } from "./slice";
+import { CardModalSlice, SearchCurrencySlice, ThemeSlice } from "./slice";
 
 export const store = configureStore({
   reducer: {
+    theme: ThemeSlice,
     cardModal: CardModalSlice,
     searchCurrency: SearchCurrencySlice,
   },

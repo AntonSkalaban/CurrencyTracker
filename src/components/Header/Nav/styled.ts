@@ -12,7 +12,7 @@ export const StyledNavItem = styled.div``;
 
 export const StyledNavLink = styled(NavLink)`
   font-size: 20px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.fontSecondary};
   &.active {
     ${greenGradientText}
   }

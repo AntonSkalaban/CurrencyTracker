@@ -45,7 +45,7 @@ export class Timeline extends React.Component {
           <Dropdown options={currencyOptions} onChange={(val) => this.handleCurChange(val)} />{" "}
           <Dropdown options={dateOptions} onChange={(val) => this.handlePeriodChange(val)} />
         </DropdownsContainer>
-        <Chart curCode={curCode} period={period} date={startDate} />;
+        <Chart curCode={curCode} period={period} date={startDate} />
       </Wrapper>
     );
   }

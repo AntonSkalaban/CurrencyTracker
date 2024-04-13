@@ -1,12 +1,16 @@
-import { darkTheme, lightTheme } from "components/Theme/Theme";
-import { ThemeEnum } from "types/defaultTheme";
+import { useDispatch, useSelector } from "react-redux";
+import { getThemeType, setTheme } from "store/slice";
+import { darkTheme, lightTheme } from "constants/theme";
+import { ThemeEnum } from "types";
 import { SwitchButton, SwitchInput, SwitchLabel } from "./styled";
 
 export const ThemeToggle: React.FC = () => {
-  const themeType = ThemeEnum.light;
+  const dispatch = useDispatch();
+  const themeType = useSelector(getThemeType);
 
   const handleChange = () => {
     const theme = themeType === ThemeEnum.light ? darkTheme : lightTheme;
+    dispatch(setTheme(theme));
     localStorage.setItem("themeType", theme.type);
   };
 

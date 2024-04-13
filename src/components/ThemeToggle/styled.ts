@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { flexMixin } from "components/styled";
+import { ThemeEnum } from "types/defaultTheme";
 
 export const SwitchInput = styled.input`
   height: 0;
@@ -17,7 +18,8 @@ export const SwitchLabel = styled.label`
   border-radius: 100px;
   border: 1px solid white;
 
-  border-color: ${({ theme }) => theme.colors.white};
+  border-color: ${({ theme }) =>
+    theme.type === ThemeEnum.dark ? theme.colors.white : theme.colors.black};
   position: relative;
   transition: background-color 0.2s;
 `;
@@ -31,9 +33,11 @@ export const SwitchButton = styled.span`
   height: 25px;
   border-radius: 45px;
   border: 1px solid white;
-  border-color: ${({ theme }) => theme.colors.white};
+  border-color: ${({ theme }) =>
+    theme.type === ThemeEnum.dark ? theme.colors.white : theme.colors.black};
   transition: 0.2s;
-  background: ${({ theme }) => theme.colors.black};
+  background: ${({ theme }) =>
+    theme.type === ThemeEnum.dark ? theme.colors.white : theme.colors.black};
   box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
 
   ${SwitchInput}:checked + ${SwitchLabel} & {
@@ -46,6 +50,7 @@ export const SwitchButton = styled.span`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme }) =>
+      theme.type === ThemeEnum.dark ? theme.colors.white : theme.colors.black};
   }
 `;

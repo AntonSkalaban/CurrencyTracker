@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
-import { flexMixin } from "components/styled";
+import { flexMixin, StyledP } from "components/styled";
+import Vector from "assets/svg/vector.svg";
 
 export const StyledDropdownConainer = styled.div`
   min-width: 120px;
@@ -18,13 +19,20 @@ export const StyledDropdownHeader = styled.div`
   gap: 20px;
 `;
 
-export const StyledDropdownText = styled.p`
+export const StyledDropdownVector = styled(Vector)`
+  width: 16px;
+  height: 16px;
+  & path {
+    fill: ${({ theme }) => theme.colors.fontMain};
+  }
+`;
+
+export const StyledDropdownText = styled(StyledP)`
   font-weight: 500;
   font-size: 30px;
   line-height: 45px;
-
-  color: #ffffff;
 `;
+
 export const StyledDropdownBody = styled.div`
   width: 100%;
   height: 340px;
@@ -32,7 +40,7 @@ export const StyledDropdownBody = styled.div`
   position: absolute;
   top: 40px;
 
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.bgMain};
 `;
 
 export const StyledOption = styled.li`
@@ -45,7 +53,7 @@ export const StyledOption = styled.li`
   font-weight: 300;
   font-size: 32px;
   line-height: 42px;
-  color: ${({ theme }) => theme.colors.lightGrey};
+  color: ${({ theme }) => theme.colors.fontMain};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.lightGrey};
