@@ -1,4 +1,5 @@
 import { keyframes, styled } from "styled-components";
+import { flexCenterMixin } from "components/styled";
 
 const drop = keyframes`
   from {
@@ -17,13 +18,15 @@ export const StyledPopUp = styled.div`
   position: absolute;
   top: 20px;
   left: calc(50% - 150px);
+
+  ${flexCenterMixin}
   border-radius: 8px;
-  padding: 15px;
+
   background-color: pink;
+
+  padding: 15px;
+
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 99999;
   animation: ${drop} 1s;
 `;

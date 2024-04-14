@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flexMixin } from "components/styled";
+import { flexSpaceBetweenMixin } from "components/styled";
 import { ThemeEnum } from "types/defaultTheme";
 
 export const SwitchInput = styled.input`
@@ -10,7 +10,7 @@ export const SwitchInput = styled.input`
 `;
 
 export const SwitchLabel = styled.label`
-  ${flexMixin}
+  ${flexSpaceBetweenMixin}
 
   cursor: pointer;
   width: 50px;

@@ -1,9 +1,10 @@
 import { styled } from "styled-components";
+import { flexCenterMixin } from "components/styled";
 
 export const StyledModalContentContainer = styled.div`
-  display: flex;
+  ${flexCenterMixin}
   flex-direction: column;
-  align-items: center;
+
   gap: 20px;
 `;
 
@@ -22,7 +23,5 @@ export const StyledLogoContainer = styled.div`
 `;
 
 export const ConverString = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenterMixin}
 `;

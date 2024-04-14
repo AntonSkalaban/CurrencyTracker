@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { flexMixin } from "components/styled";
+import { flexSpaceBetweenMixin } from "components/styled";
 import Logo from "assets/svg/logo.svg";
 
 export const StyledHeader = styled.header`
@@ -13,7 +13,7 @@ export const StyledHeader = styled.header`
 export const StyledHeaderContainer = styled.div`
   height: 100%;
 
-  ${flexMixin};
+  ${flexSpaceBetweenMixin};
 `;
 
 export const LogoContainer = styled.div`

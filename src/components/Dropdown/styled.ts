@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { flexMixin, StyledP } from "components/styled";
+import { flexSpaceBetweenMixin, StyledP } from "components/styled";
 import Vector from "assets/svg/vector.svg";
 
 export const StyledDropdownConainer = styled.div`
@@ -19,7 +19,7 @@ export const StyledDropdownHeader = styled.div`
   height: 40px;
   padding: 0 10px;
 
-  ${flexMixin}
+  ${flexSpaceBetweenMixin}
   gap: 20px;
 `;
 

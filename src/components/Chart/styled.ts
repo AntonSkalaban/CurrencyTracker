@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
+import { flexCenterMixin } from "components/styled";
 
 export const ChartContainer = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${flexCenterMixin}
 `;

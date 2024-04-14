@@ -1,10 +1,9 @@
 import { styled } from "styled-components";
+import { flexCenterMixin } from "components/styled";
 
 export const StyledSearchContainer = styled.div`
-  display: flex;
+  ${flexCenterMixin}
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 24px;
   margin-top: 105px;
 

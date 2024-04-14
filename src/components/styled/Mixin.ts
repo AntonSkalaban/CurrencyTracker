@@ -1,9 +1,15 @@
 import { css } from "styled-components";
 
-export const flexMixin = css`
+export const flexSpaceBetweenMixin = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`;
+
+export const flexCenterMixin = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const greenGradientText = css`

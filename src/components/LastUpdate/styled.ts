@@ -1,5 +1,5 @@
 import { keyframes, styled } from "styled-components";
-import { StyledP } from "components/styled";
+import { flexCenterMixin, StyledP } from "components/styled";
 
 const flash = keyframes`
   0% {
@@ -22,9 +22,7 @@ export const StyledText = styled(StyledP)`
 export const StyledLastUpdateContainer = styled.div`
   width: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${flexCenterMixin}
   gap: 24px;
   margin-top: 62px;
 `;
