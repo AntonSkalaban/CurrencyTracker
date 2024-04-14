@@ -10,7 +10,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Title2 } from "components/styled";
-import { StyledLoadingSpinner } from "components/UI/LoadingSpiner/styled";
+import { LoadingSpinner } from "components/UI";
 import { fetchHistory } from "utils/api/historyApi";
 import { cache } from "utils/cache";
 import { Subject } from "utils/observer";
@@ -107,19 +107,20 @@ export class Chart extends React.Component<ChartProps, ChartState> {
   render() {
     const { data, isFetching, isError } = this.state;
 
-    if (isError || !data.length)
+    if (isError || (!data.length && !isFetching))
       return (
         <ChartContainer>
           <Title2>Error..</Title2>
         </ChartContainer>
       );
 
-    if (isFetching)
+    if (isFetching) {
       return (
         <ChartContainer>
-          <StyledLoadingSpinner />
+          <LoadingSpinner />
         </ChartContainer>
       );
+    }
 
     const chartData = getChartData(data);
 

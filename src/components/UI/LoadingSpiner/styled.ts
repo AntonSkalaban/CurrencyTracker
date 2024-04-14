@@ -17,7 +17,7 @@ export const StyledLoadingSpinner = styled.div`
   -moz-animation: crabbly_spinner infinite 0.75s linear;
   -o-animation: crabbly_spinner infinite 0.75s linear;
   animation: ${rotate} infinite 0.75s linear;
-  border: 4px solid ${({ theme }) => theme.colors.ligthGreen};
+  border: 4px solid ${({ theme }) => theme.colors.grey};
   border-top-color: rgba(0, 0, 0, 0.1);
   border-right-color: rgba(0, 0, 0, 0.1);
   border-bottom-color: rgba(0, 0, 0, 0.1);

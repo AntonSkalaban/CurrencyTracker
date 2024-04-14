@@ -2,8 +2,8 @@ import React from "react";
 import { Chart } from "components/Chart";
 import { Dropdown } from "components/Dropdown";
 import { Wrapper } from "components/UI";
-import { defQuotesData } from "constants/cardsData";
-import { dateController } from "utils/helpers/dateController";
+import { currencyOptions, dateOptions } from "constants/index";
+import { dateController } from "utils/helpers";
 import { DropdownsContainer } from "./styled";
 
 interface TimelineState {
@@ -29,15 +29,6 @@ export class Timeline extends React.Component {
 
   render() {
     const { curCode, period, startDate } = this.state;
-
-    const currencyOptions = defQuotesData.map((el) => ({ name: el.code, value: el.code }));
-    const dateOptions = [
-      { name: "all month", value: "MONTH" + "%" + dateController.subtractOneMonthFromNow() },
-      ...dateController.getDatesList(dateController.subtractOneMonthFromNow()).map((el) => ({
-        name: dateController.toDDMonth(el),
-        value: "DAY" + "%" + el,
-      })),
-    ];
 
     return (
       <Wrapper>
