@@ -1,6 +1,13 @@
+import { BurgerMenu } from "components/BurgerMenu";
 import { ThemeToggle, Wrapper } from "..";
 import { Nav } from "./Nav";
-import { LogoContainer, LogoIcon, StyledHeader, StyledHeaderContainer } from "./styled";
+import {
+  LargeMediaContainer,
+  LogoContainer,
+  LogoIcon,
+  StyledHeader,
+  StyledHeaderContainer,
+} from "./styled";
 
 export const Header: React.FC = () => {
   return (
@@ -11,9 +18,17 @@ export const Header: React.FC = () => {
             <LogoIcon />
           </LogoContainer>
 
-          <Nav />
+          <LargeMediaContainer>
+            <Nav />
+          </LargeMediaContainer>
+          <LargeMediaContainer>
+            <ThemeToggle />
+          </LargeMediaContainer>
 
-          <ThemeToggle />
+          <BurgerMenu>
+            <ThemeToggle />
+            <Nav />
+          </BurgerMenu>
         </StyledHeaderContainer>
       </Wrapper>
     </StyledHeader>

@@ -1,15 +1,5 @@
 import { styled } from "styled-components";
 
-export const StyledModalOverlay = styled.section`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 500;
-`;
-
 export const StyledModalContainer = styled.section`
   width: 600px;
   height: 400px;
