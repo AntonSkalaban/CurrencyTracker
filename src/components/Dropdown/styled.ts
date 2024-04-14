@@ -8,6 +8,10 @@ export const StyledDropdownConainer = styled.div`
   position: relative;
 
   user-select: none;
+
+  @media ${({ theme }) => theme.media.small} {
+    display: none;
+  }
 `;
 
 export const StyledDropdownHeader = styled.div`
@@ -28,9 +32,15 @@ export const StyledDropdownVector = styled(Vector)`
 `;
 
 export const StyledDropdownText = styled(StyledP)`
-  font-weight: 500;
+  font-weight: 400;
   font-size: 30px;
   line-height: 45px;
+
+  @media ${({ theme }) => theme.media.medium} {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 26px;
+  }
 `;
 
 export const StyledDropdownBody = styled.div`
@@ -58,7 +68,14 @@ export const StyledOption = styled.li`
   &:hover {
     background-color: ${({ theme }) => theme.colors.lightGrey};
   }
+
+  @media ${({ theme }) => theme.media.medium} {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 26px;
+  }
 `;
+
 export const StyledInputRadio = styled.input`
   width: 100%;
   display: none;
@@ -68,4 +85,19 @@ export const StyledLabel = styled.label`
   display: inline-block;
   width: 100%;
   cursor: pointer;
+`;
+
+export const StyledSelect = styled.select`
+  display: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  font-weight: 300;
+  font-size: 20px;
+  color: ${({ theme }) => theme.colors.fontSecondary};
+
+  @media ${({ theme }) => theme.media.small} {
+    display: block;
+  }
 `;

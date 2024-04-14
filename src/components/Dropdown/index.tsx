@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useClickOutside } from "utils/hooks/useClickOutside";
 import {
   StyledDropdownBody,
@@ -9,6 +9,7 @@ import {
   StyledInputRadio,
   StyledLabel,
   StyledOption,
+  StyledSelect,
 } from "./styled";
 
 interface DropdownProps {
@@ -16,6 +17,7 @@ interface DropdownProps {
   defValue?: string;
   onChange: (value: string) => void;
 }
+
 export const Dropdown: React.FC<DropdownProps> = ({ options, onChange, defValue }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectValue, setSelectValue] = useState(defValue || options[0].name);
@@ -25,40 +27,52 @@ export const Dropdown: React.FC<DropdownProps> = ({ options, onChange, defValue 
 
   const ref = useClickOutside(() => setIsOpen(false));
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const target = e.target;
     onChange(target.value);
     setSelectValue(target.name);
-    setIsOpen(false);
+    if (isOpen) setIsOpen(false);
   };
 
   return (
-    <StyledDropdownConainer ref={ref}>
-      <StyledDropdownHeader onClick={handleClick}>
-        <StyledDropdownText>{selectValue}</StyledDropdownText>
-        <StyledDropdownVector />
-      </StyledDropdownHeader>
-      {isOpen && (
-        <StyledDropdownBody>
-          <ul>
-            {options.map(({ name, value }) => {
-              return (
-                <StyledOption key={name}>
-                  <StyledLabel>
-                    {name}
-                    <StyledInputRadio
-                      type="radio"
-                      name={name}
-                      value={value}
-                      onChange={handleChange}
-                    />
-                  </StyledLabel>
-                </StyledOption>
-              );
-            })}
-          </ul>
-        </StyledDropdownBody>
-      )}
-    </StyledDropdownConainer>
+    <>
+      <StyledDropdownConainer ref={ref}>
+        <StyledDropdownHeader onClick={handleClick}>
+          <StyledDropdownText>{selectValue}</StyledDropdownText>
+          <StyledDropdownVector />
+        </StyledDropdownHeader>
+        {isOpen && (
+          <StyledDropdownBody>
+            <ul>
+              {options.map(({ name, value }) => {
+                return (
+                  <StyledOption key={name}>
+                    <StyledLabel>
+                      {name}
+                      <StyledInputRadio
+                        type="radio"
+                        name={name}
+                        value={value}
+                        onChange={handleChange}
+                      />
+                    </StyledLabel>
+                  </StyledOption>
+                );
+              })}
+            </ul>
+          </StyledDropdownBody>
+        )}
+      </StyledDropdownConainer>
+
+      <StyledSelect onChange={handleChange}>
+        {options.map(({ name, value }) => {
+          return (
+            <option key={value} value={value}>
+              {name}
+            </option>
+          );
+        })}
+      </StyledSelect>
+    </>
   );
 };

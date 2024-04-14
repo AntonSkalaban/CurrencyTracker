@@ -7,6 +7,16 @@ export const ElasticSearchContainer = styled.div`
   height: 66px;
   border-radius: 8px;
   position: relative;
+
+  @media ${({ theme }) => theme.media.medium} {
+    width: 400px;
+    height: 45px;
+  }
+
+  @media ${({ theme }) => theme.media.extraSmall} {
+    width: 300px;
+    height: 35px;
+  }
 `;
 export const StyledInput = styled.input`
   width: 100%;

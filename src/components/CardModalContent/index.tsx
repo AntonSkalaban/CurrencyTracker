@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Dropdown } from "components/Dropdown";
 import { NumberInput } from "components/NumberInput";
-import { StyledP, Title2 } from "components/styled";
+import { StyledP, Title3 } from "components/styled";
 import { getModalData } from "store/slice";
 import { defQuotesData } from "constants/cardsData";
 import { quotesIcons } from "constants/icons";
@@ -11,7 +11,7 @@ import { cache } from "utils/cache";
 import { useDebounce } from "utils/hooks";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
 import { RateCache } from "types/cache";
-import { StyledLogoContainer, StyledModalContentContainer } from "./styled";
+import { ConverString, StyledLogoContainer, StyledModalContentContainer } from "./styled";
 
 export const CardModalContent: React.FC = () => {
   const { title, code } = useSelector(getModalData);
@@ -64,19 +64,19 @@ export const CardModalContent: React.FC = () => {
   return (
     <StyledModalContentContainer>
       <StyledLogoContainer>{quotesIcons[code]}</StyledLogoContainer>
-      <Title2>
+      <Title3>
         {title} ({code})
-      </Title2>
-      <div style={{ display: "flex" }}>
+      </Title3>
+      <ConverString>
         <NumberInput defVal={amount} onChange={hanldeAmountChange} />
         <StyledP>{code} = </StyledP>
         <StyledP> {convertedAmount.toFixed(2)}</StyledP>
         <Dropdown
-          options={defQuotesData.map((el) => ({ name: el.code, value: el.code }))}
+          options={defQuotesData.map(({ code }) => ({ name: code, value: code }))}
           defValue={selectCurCode}
           onChange={hanldeCurrencyChange}
         />
-      </div>
+      </ConverString>
       {isFetching && <StyledP>Fetching...</StyledP>}
       {isError && <StyledP>Error...</StyledP>}
     </StyledModalContentContainer>

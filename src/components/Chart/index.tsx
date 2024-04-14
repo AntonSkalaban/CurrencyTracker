@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Title2 } from "components/styled";
+import { StyledLoadingSpinner } from "components/UI/LoadingSpiner/styled";
 import { fetchHistory } from "utils/api/historyApi";
 import { cache } from "utils/cache";
 import { Subject } from "utils/observer";
@@ -17,6 +18,7 @@ import { PopupObserver } from "utils/PopUpObserver";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
 import { HistoryCache, HistoryData } from "types";
 import { getChartData, options } from "./constants";
+import { ChartContainer } from "./styled";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -105,18 +107,26 @@ export class Chart extends React.Component<ChartProps, ChartState> {
   render() {
     const { data, isFetching, isError } = this.state;
 
-    if (isError || !data.length) {
-      return <Title2>Error..</Title2>;
-    }
+    if (isError || !data.length)
+      return (
+        <ChartContainer>
+          <Title2>Error..</Title2>
+        </ChartContainer>
+      );
 
-    if (isFetching) return <Title2>Fetching..</Title2>;
+    if (isFetching)
+      return (
+        <ChartContainer>
+          <StyledLoadingSpinner />
+        </ChartContainer>
+      );
 
     const chartData = getChartData(data);
 
     return (
-      <>
+      <ChartContainer>
         <Bar options={options} data={chartData} />
-      </>
+      </ChartContainer>
     );
   }
 }

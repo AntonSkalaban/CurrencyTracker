@@ -43,6 +43,10 @@ export class DefaultElasticSearch extends React.Component<ElasticSearchProps, El
     if (e.key === "Enter") this.setState({ cuurency: this.state.value });
   };
 
+  hanldeHintClick = () => (val: string) => {
+    this.setState({ value: val, cuurency: val });
+  };
+
   componentDidUpdate(
     _prevProps: Readonly<ElasticSearchProps>,
     prevState: Readonly<ElasticSearchState>,
@@ -67,10 +71,7 @@ export class DefaultElasticSearch extends React.Component<ElasticSearchProps, El
         <StyledSearchButton tabIndex={0} onClick={this.handleClick}>
           <StyledSearchIcon />
         </StyledSearchButton>
-        <SearchSuggestions
-          value={debouncedValue}
-          onClick={(val) => this.setState({ value: val })}
-        />
+        <SearchSuggestions value={debouncedValue} onClick={this.hanldeHintClick()} />
       </ElasticSearchContainer>
     );
   }

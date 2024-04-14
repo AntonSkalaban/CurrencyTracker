@@ -1,12 +1,13 @@
 import React from "react";
+import { Title3 } from "components/styled";
 import { ElasticSearch } from "./ElasticSearch";
-import { StyledSearchContainer, StyledText } from "./styled";
+import { StyledSearchContainer } from "./styled";
 
 export class SearchContainer extends React.Component {
   render() {
     return (
       <StyledSearchContainer>
-        <StyledText>Search currency in the bank</StyledText>
+        <Title3>Search currency in the bank</Title3>
         <ElasticSearch />
       </StyledSearchContainer>
     );

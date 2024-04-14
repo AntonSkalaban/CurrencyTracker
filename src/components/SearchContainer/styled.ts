@@ -7,6 +7,11 @@ export const StyledSearchContainer = styled.div`
   justify-content: center;
   gap: 24px;
   margin-top: 105px;
+
+  @media ${({ theme }) => theme.media.medium} {
+    margin-top: 40px;
+    gap: 10px;
+  }
 `;
 
 export const StyledText = styled.h4`

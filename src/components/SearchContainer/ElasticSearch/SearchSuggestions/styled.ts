@@ -7,6 +7,10 @@ export const StyledSearchSuggestionsContainer = styled.div`
   top: 66px;
   z-index: 100;
   background: #1b2028;
+
+  @media ${({ theme }) => theme.media.medium} {
+    top: 35px;
+  }
 `;
 
 export const StyledSearchSuggestionsLi = styled.li`

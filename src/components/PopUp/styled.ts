@@ -24,7 +24,7 @@ export const StyledPopUp = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  z-index: 99999;
   animation: ${drop} 1s;
 `;
 

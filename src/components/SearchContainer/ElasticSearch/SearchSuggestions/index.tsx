@@ -26,6 +26,11 @@ export class SearchSuggestions extends React.Component<
     if (value) this.setState({ suggestionData: getSuggestionsValues(value) });
   }
 
+  hanldeClick = (val: string) => () => {
+    this.props.onClick(val);
+    this.setState({ isOpen: false });
+  };
+
   render() {
     const { suggestionData, isOpen } = this.state;
     return (
@@ -35,7 +40,7 @@ export class SearchSuggestions extends React.Component<
             <ul>
               {suggestionData.map((val) => {
                 return (
-                  <StyledSearchSuggestionsLi key={val} onClick={() => this.props.onClick(val)}>
+                  <StyledSearchSuggestionsLi key={val} onClick={this.hanldeClick(val)}>
                     {val}
                   </StyledSearchSuggestionsLi>
                 );

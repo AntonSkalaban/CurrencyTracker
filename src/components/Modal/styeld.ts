@@ -4,7 +4,8 @@ export const StyledModalContainer = styled.section`
   width: 600px;
   height: 400px;
   position: relative;
-  padding-top: 25px;
+
+  padding: 25px;
 
   position: fixed;
   top: 50%;
@@ -14,6 +15,17 @@ export const StyledModalContainer = styled.section`
   transform: translate(-50%, -50%);
   background-color: ${({ theme }) => theme.colors.bgSecondary};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  @media ${({ theme }) => theme.media.medium} {
+    width: 450px;
+    height: 300px;
+    padding: 10px;
+  }
+
+  @media ${({ theme }) => theme.media.extraSmall} {
+    width: 320px;
+    height: 200px;
+  }
 `;
 
 export const StyledCloseBtn = styled.button`
