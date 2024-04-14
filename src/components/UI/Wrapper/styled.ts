@@ -5,4 +5,9 @@ export const StyledWrapper = styled.div`
   height: 100%;
   box-sizing: content-box;
   margin: 0 auto;
+  padding: 0 10px;
+
+  @media ${({ theme }) => theme.media.large} {
+    max-width: 1000px;
+  }
 `;

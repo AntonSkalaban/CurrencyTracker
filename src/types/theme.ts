@@ -6,6 +6,14 @@ export interface Colors {
   grey: string;
 }
 
+export interface Media {
+  large: string;
+  medium: string;
+  small: string;
+  extraSmall: string;
+}
+
 export interface Theme {
   colors: Colors;
+  media: Media;
 }

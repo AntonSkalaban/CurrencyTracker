@@ -1,9 +1,9 @@
+import { Wrapper } from "..";
 import {
   LogoContainer,
   LogoIcon,
   StyledContentContainer,
   StyledSubtitle,
-  StyledTextContainer,
   StyledTitle,
   StyledTitleSection,
   StyledTitleSpan,
@@ -12,8 +12,8 @@ import {
 export const TitleSection: React.FC = () => {
   return (
     <StyledTitleSection>
-      <StyledContentContainer>
-        <StyledTextContainer>
+      <Wrapper>
+        <StyledContentContainer>
           <StyledTitle>
             Modsen Currency <br />
             <StyledTitleSpan>Tracker</StyledTitleSpan>
@@ -22,11 +22,12 @@ export const TitleSection: React.FC = () => {
             Quotes for the dollar and other <br />
             international currencies.
           </StyledSubtitle>
-        </StyledTextContainer>
-        <LogoContainer>
-          <LogoIcon />
-        </LogoContainer>
-      </StyledContentContainer>
+
+          <LogoContainer>
+            <LogoIcon />
+          </LogoContainer>
+        </StyledContentContainer>
+      </Wrapper>
     </StyledTitleSection>
   );
 };

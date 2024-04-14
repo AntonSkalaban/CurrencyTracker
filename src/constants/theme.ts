@@ -11,6 +11,12 @@ export const baseTheme: Theme = {
     lightGrey: "rgba(217, 217, 217, 1)",
     grey: "rgba(32, 32, 37, 1)",
   },
+  media: {
+    large: "(max-width: 1110px)",
+    medium: "(max-width: 880px)",
+    small: "(max-width: 660px)",
+    extraSmall: "(max-width: 460px)",
+  },
 };
 
 export const lightTheme: DefaultTheme = {
