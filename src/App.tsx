@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import { BankCard, Home, Timeline } from "pages";
+import { BankCard, Home, NotFound, Timeline } from "pages";
 import { Layout } from "components";
 import { FontStyles, GeneralStyles, NormalStyles } from "components/styled";
 import { getTheme } from "store/slice";
@@ -23,6 +23,7 @@ export const App: React.FC = () => {
           <Route index element={<Home />} />
           <Route path={PagesPaths.Timeline} element={<Timeline />} />
           <Route path={PagesPaths.BankCard} element={<BankCard />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </ThemeProvider>
