@@ -3,19 +3,20 @@ import { StyledNumberInput } from "./styled";
 interface NumberInputProps {
   name: string;
   value: string;
-  onChange: (val: string) => void;
+  onChange: ({ name, value }: { name: string; value: string }) => void;
 }
 export const NumberInput: React.FC<NumberInputProps> = ({ name, value, onChange }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    if (val.length > 5) return;
-    const value = val.replace(/\D/g, "");
+    const { name, value } = e.target;
+    // if (val.length > 5) return;
+    // const value = val.replace(/\D/g, "");
 
-    onChange(value);
+    onChange({ name, value });
   };
 
   return (
     <StyledNumberInput
+      name={name}
       type="tel"
       value={value}
       onChange={handleChange}

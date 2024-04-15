@@ -6,8 +6,8 @@ import { Observer } from "./observer";
 export class PopupObserver implements Observer<string> {
   timerId: NodeJS.Timeout | null = null;
 
-  update(state: string): void {
-    if (state !== "MONTH" || this.timerId) return;
+  update(): void {
+    if (this.timerId) return;
 
     const popUpElement = React.createElement(PopUp, { message: "chart loaded successfully" });
 

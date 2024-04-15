@@ -14,13 +14,12 @@ import {
 
 interface DropdownProps {
   options: { name: string; value: string }[];
-  defValue?: string;
   onChange: (value: string) => void;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ options, onChange, defValue }) => {
+export const Dropdown: React.FC<DropdownProps> = ({ options, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectValue, setSelectValue] = useState(defValue || options[0].name);
+  const [selectValue, setSelectValue] = useState(options[0].name);
   const handleClick = () => {
     setIsOpen((prev) => !prev);
   };
@@ -28,9 +27,9 @@ export const Dropdown: React.FC<DropdownProps> = ({ options, onChange, defValue 
   const ref = useClickOutside(() => setIsOpen(false));
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
-    const target = e.target;
-    onChange(target.value);
-    setSelectValue(target.name);
+    const { name, value } = e.target;
+    onChange(value);
+    setSelectValue(name);
     if (isOpen) setIsOpen(false);
   };
 

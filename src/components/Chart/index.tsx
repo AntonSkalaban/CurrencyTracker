@@ -11,33 +11,30 @@ import {
 } from "chart.js";
 import { Title2 } from "components/styled";
 import { LoadingSpinner } from "components/UI";
+import { options } from "constants/chartData";
 import { fetchHistory } from "utils/api/historyApi";
 import { cache } from "utils/cache";
+import { getChartData } from "utils/helpers/chartData";
 import { Subject } from "utils/observer";
 import { PopupObserver } from "utils/PopUpObserver";
 import { shouldDataUpdate } from "utils/shouldDataUpdate";
 import { HistoryCache, HistoryData } from "types";
-import { getChartData, options } from "./constants";
 import { ChartContainer } from "./styled";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 interface ChartProps {
   curCode: string;
-  period: string;
-  date: string;
+  data: HistoryData[];
+  setData: (data: HistoryData[]) => void;
 }
 
 interface ChartState {
-  data: HistoryData[];
   isError: boolean;
   isFetching: boolean;
 }
 export class Chart extends React.Component<ChartProps, ChartState> {
-  key = this.props.curCode + "-" + this.props.period + "-" + this.props.date;
-
   state = {
-    data: cache.getObj<HistoryCache>(this.key)?.data || [],
     isError: false,
     isFetching: false,
   };
@@ -47,17 +44,17 @@ export class Chart extends React.Component<ChartProps, ChartState> {
   popupObserver = new PopupObserver();
 
   getGraphData = async () => {
-    const { curCode, period, date } = this.props;
+    const { curCode } = this.props;
     try {
       this.setState({
         isError: false,
         isFetching: true,
       });
 
-      const data = await fetchHistory(curCode, date, period);
-      this.setState({ data });
+      const data = await fetchHistory(curCode);
+      this.props.setData(data);
 
-      cache.setObj(this.key, data);
+      cache.setObj(curCode, data);
     } catch (e) {
       this.setState({ isError: true });
     } finally {
@@ -66,19 +63,17 @@ export class Chart extends React.Component<ChartProps, ChartState> {
   };
 
   updateData() {
-    this.key = this.props.curCode + "-" + this.props.period + "-" + this.props.date;
-    if (shouldDataUpdate(this.key)) this.getGraphData();
+    const { curCode, setData } = this.props;
+    if (shouldDataUpdate(curCode)) this.getGraphData();
     else {
-      this.setState({
-        isError: false,
-        data: cache.getObj<HistoryCache>(this.key)?.data || [],
-      });
+      this.setState({ isError: false });
+      setData(cache.getObj<HistoryCache>(curCode)?.data || []);
     }
   }
 
   updateObserver() {
     if (!this.state.isFetching && !this.state.isError) {
-      this.popupObserver.update(this.props.period);
+      this.popupObserver.update();
     }
   }
 
@@ -89,14 +84,14 @@ export class Chart extends React.Component<ChartProps, ChartState> {
   }
 
   componentDidUpdate(prevProps: Readonly<ChartProps>, prevState: Readonly<ChartState>): void {
-    if (
-      prevProps.curCode !== this.props.curCode ||
-      prevProps.period !== this.props.period ||
-      prevProps.date !== this.props.date
-    ) {
+    if (prevProps.curCode !== this.props.curCode) {
       this.updateData();
     }
-    if (prevState.isError !== this.state.isError || prevState.isFetching !== this.state.isFetching)
+    if (
+      prevState.isError !== this.state.isError ||
+      prevState.isFetching !== this.state.isFetching ||
+      prevProps.data !== this.props.data
+    )
       this.updateObserver();
   }
 
@@ -105,9 +100,10 @@ export class Chart extends React.Component<ChartProps, ChartState> {
   }
 
   render() {
-    const { data, isFetching, isError } = this.state;
+    const { isFetching, isError } = this.state;
+    const { data } = this.props;
 
-    if (isError || (!data.length && !isFetching))
+    if (isError || (!data?.length && !isFetching))
       return (
         <ChartContainer>
           <Title2>Error..</Title2>
@@ -124,10 +120,6 @@ export class Chart extends React.Component<ChartProps, ChartState> {
 
     const chartData = getChartData(data);
 
-    return (
-      <ChartContainer>
-        <Bar options={options} data={chartData} />
-      </ChartContainer>
-    );
+    return <Bar options={options} data={chartData} />;
   }
 }

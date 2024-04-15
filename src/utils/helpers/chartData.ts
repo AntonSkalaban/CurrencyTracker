@@ -1,5 +1,17 @@
-import { dateController } from "utils/helpers";
 import { HistoryData } from "types/history";
+import { dateController } from "./dateController";
+
+export const changeChartData = (
+  data: HistoryData[],
+  newData: { date: string; minVal: string; maxVal: string },
+) => {
+  return data.map((el) => {
+    if (new Date(el.time_period_start).toDateString() === new Date(newData.date).toDateString()) {
+      return { ...el, price_open: +newData.minVal, price_close: +newData.maxVal };
+    }
+    return el;
+  });
+};
 
 export const getChartData = (data: HistoryData[]) => {
   const prices = data.map((data) => [data.price_open, data.price_close]);
@@ -19,13 +31,4 @@ export const getChartData = (data: HistoryData[]) => {
       },
     ],
   };
-};
-
-export const options = {
-  responsive: true,
-  scales: {
-    y: {
-      beginAtZero: false,
-    },
-  },
 };

@@ -1,52 +1,40 @@
 import React from "react";
 import { Chart } from "components/Chart";
+import { ChartEditor } from "components/Chart/ChartEditor";
 import { Dropdown } from "components/Dropdown";
-import { NumberInput } from "components/NumberInput";
 import { Wrapper } from "components/UI";
-import { currencyOptions, dateOptions } from "constants/index";
-import { dateController } from "utils/helpers";
-import { DropdownsContainer } from "./styled";
+import { currencyOptions } from "constants/index";
+import { changeChartData } from "utils/helpers/chartData";
+import { HistoryData } from "types/index";
 
 interface TimelineState {
+  data: HistoryData[];
   curCode: string;
-  period: string;
-  startDate: string;
-  minValue: string;
 }
 export class Timeline extends React.Component {
   state: TimelineState = {
+    data: [],
     curCode: "EUR",
-    period: "MONTH",
-    startDate: dateController.subtractOneMonthFromNow(),
-    minValue: "",
   };
 
   handleCurChange = (val: string) => {
     this.setState({ curCode: val });
   };
 
-  handleStartDateChange = (val: string) => {
-    const [period, startDate] = val.split("%");
-    this.setState({ period, startDate });
-  };
+  hanldeDataChange = (newData: { date: string; minVal: string; maxVal: string }) => {
+    const newChartData = changeChartData(this.state.data, newData);
 
-  handleNumInputChange = (val: string) => {
-    return val;
+    this.setState({ data: newChartData });
   };
 
   render() {
-    const { curCode, period, startDate } = this.state;
+    const { data, curCode } = this.state;
 
     return (
       <Wrapper>
-        <DropdownsContainer>
-          <Dropdown options={currencyOptions} onChange={(val) => this.handleCurChange(val)} />{" "}
-          <Dropdown options={dateOptions} onChange={(val) => this.handleStartDateChange(val)} />
-        </DropdownsContainer>
-        <div>
-          <NumberInput name="minValue" onChange={} value={""} />
-        </div>
-        <Chart curCode={curCode} period={period} date={startDate} />;
+        <Dropdown options={currencyOptions} onChange={this.handleCurChange} />{" "}
+        <ChartEditor changeData={this.hanldeDataChange} />
+        <Chart data={data} curCode={curCode} setData={(val) => this.setState({ data: val })} />;
       </Wrapper>
     );
   }

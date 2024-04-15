@@ -14,16 +14,16 @@ import { ConvertContainer } from "./styled";
 export const CurrencyConverter: React.FC = () => {
   const { code } = useSelector(getModalData);
 
-  const [convertedAmount, setConvertedAmount] = useState(1);
-  const [selectCurCode, setRateCode] = useState("USD");
   const [amount, setAmount] = useState("1");
+  const [toCurCode, setToCurCode] = useState("USD");
+  const [convertedAmount, setConvertedAmount] = useState(0);
 
   const [isFetching, setIsFetching] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const debouncedAmount = useDebounce(amount);
 
-  const convertedCurrencyes = `${code}/${selectCurCode}`;
+  const convertedCurrencyes = `${code}/${toCurCode}`;
 
   useEffect(() => {
     const getData = async () => {
@@ -31,7 +31,7 @@ export const CurrencyConverter: React.FC = () => {
         setIsFetching(true);
         setIsError(false);
 
-        const { result } = await getRate(code, selectCurCode);
+        const { result } = await getRate(code, toCurCode);
 
         cache.setObj<number>(convertedCurrencyes, result.convertedAmount);
 
@@ -49,14 +49,14 @@ export const CurrencyConverter: React.FC = () => {
       if (!storedRate) return;
       setConvertedAmount(storedRate * +debouncedAmount);
     }
-  }, [selectCurCode, debouncedAmount, code, convertedCurrencyes]);
+  }, [toCurCode, debouncedAmount, code, convertedCurrencyes]);
 
-  const hanldeCurrencyChange = (value: string) => {
-    setRateCode(value);
+  const handleAmountChange = (val: { name: string; value: string }) => {
+    setAmount(val.value);
   };
 
-  const hanldeAmountChange = (value: string) => {
-    setAmount(value);
+  const handleCurCodeChange = (val: string) => {
+    setToCurCode(val);
   };
 
   if (isError) return <StyledP>Error...</StyledP>;
@@ -67,13 +67,12 @@ export const CurrencyConverter: React.FC = () => {
         <StyledP> Fetching... </StyledP>
       ) : (
         <>
-          <NumberInput defVal={amount} onChange={hanldeAmountChange} />
+          <NumberInput name={"amount"} value={amount} onChange={handleAmountChange} />
           <StyledP>{code} = </StyledP>
           <StyledP data-testid="converted-value">{convertedAmount.toFixed(2)}</StyledP>
           <Dropdown
             options={defQuotesData.map(({ code }) => ({ name: code, value: code }))}
-            defValue={selectCurCode}
-            onChange={hanldeCurrencyChange}
+            onChange={handleCurCodeChange}
           />
         </>
       )}
