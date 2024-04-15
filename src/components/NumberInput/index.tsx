@@ -16,5 +16,12 @@ export const NumberInput: React.FC<NumberInputProps> = ({ defVal, onChange }) =>
     onChange(value);
   };
 
-  return <StyledNumberInput type="tel" value={value} onChange={handleChange}></StyledNumberInput>;
+  return (
+    <StyledNumberInput
+      type="tel"
+      value={value}
+      onChange={handleChange}
+      data-testid="number-input"
+    ></StyledNumberInput>
+  );
 };

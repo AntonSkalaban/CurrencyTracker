@@ -21,7 +21,3 @@ export const StyledLogoContainer = styled.div`
     height: 80px;
   }
 `;
-
-export const ConverString = styled.div`
-  ${flexCenterMixin}
-`;

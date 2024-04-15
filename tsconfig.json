@@ -27,5 +27,5 @@
         "tests/*": ["tests/*"],
      }
     },
-    "include": ["src", "src/types/react-app-env.d.ts"]
+    "include": ["src", "src/types/react-app-env.d.ts", "src/tests/mock"]
   }
