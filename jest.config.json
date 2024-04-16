@@ -10,6 +10,9 @@
     "resolver": "<rootDir>/resolver.js",
     "setupFilesAfterEnv": ["jest-styled-components"],
     "setupFiles": [ "<rootDir>/jest.polyfills.js" , "./jestSetup.js"],
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
     "transform": {
         "^.+\\.tsx?$": "babel-jest",
         "^.+\\.svg$": "jest-transformer-svg",

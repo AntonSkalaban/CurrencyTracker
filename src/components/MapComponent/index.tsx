@@ -7,6 +7,8 @@ import { banksData } from "constants/banksData";
 import { Bank } from "types/index";
 import { mapState, mapStyleUrl } from "./constants";
 
+import "maplibre-gl/dist/maplibre-gl.css";
+
 interface MapComponentProps {
   currency: string;
 }

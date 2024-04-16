@@ -8,7 +8,7 @@ jest.mock("react-map-gl/maplibre", () => ({
   Map: () => ({}),
 }));
 
-describe("App component", () => {
+describe("Router tests", () => {
   it("full app rendering/navigating", async () => {
     const { getByText, getAllByText } = render(
       <BrowserRouter>

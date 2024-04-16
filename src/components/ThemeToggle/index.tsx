@@ -17,6 +17,7 @@ export const ThemeToggle: React.FC = () => {
   return (
     <>
       <SwitchInput
+        data-testid="theme-toggle"
         id={"theme-toggle"}
         type="checkbox"
         checked={themeType === ThemeEnum.light}

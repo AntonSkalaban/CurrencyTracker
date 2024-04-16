@@ -72,7 +72,7 @@ export class Chart extends React.Component<ChartProps, ChartState> {
   }
 
   updateObserver() {
-    if (!this.state.isFetching && !this.state.isError) {
+    if (!this.state.isFetching && !this.state.isError && this.props.data.length) {
       this.popupObserver.update();
     }
   }
@@ -120,6 +120,10 @@ export class Chart extends React.Component<ChartProps, ChartState> {
 
     const chartData = getChartData(data);
 
-    return <Bar options={options} data={chartData} />;
+    return (
+      <React.Fragment datatest-id="chart">
+        <Bar options={options} data={chartData} />
+      </React.Fragment>
+    );
   }
 }
