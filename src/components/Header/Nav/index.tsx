@@ -14,7 +14,9 @@ export const Nav = () => {
       {pages.map(({ name, path }) => {
         return (
           <StyledNavItem key={path}>
-            <StyledNavLink to={"/" + path}>{name}</StyledNavLink>
+            <StyledNavLink data-testid={path} to={"/" + path}>
+              {name}
+            </StyledNavLink>
           </StyledNavItem>
         );
       })}
