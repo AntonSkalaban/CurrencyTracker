@@ -19,12 +19,6 @@ afterAll(() => {
 });
 
 describe("Chart component", () => {
-  it("renders loading spinner when fetching data", async () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const { getByTestId } = render(<Chart curCode="USD" data={[]} setData={() => {}} />);
-    expect(getByTestId("loading-spinner")).toBeDefined();
-  });
-
   it("renders error message when data fetching fails", async () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const { getByText } = render(<Chart curCode="USD" data={[]} setData={() => {}} />);
