@@ -53,6 +53,14 @@ module.exports = {
       template: path.resolve(__dirname, "public", "index.html"),
       favicon: path.resolve(__dirname, "public", "logo.svg"),
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "public", "_redirects"),
+          to: path.resolve(__dirname, "build"),
+        },
+      ],
+    }),
     new Dotenv(),
   ],
 };
