@@ -120,10 +120,6 @@ export class Chart extends React.Component<ChartProps, ChartState> {
 
     const chartData = getChartData(data);
 
-    return (
-      <React.Fragment datatest-id="chart">
-        <Bar options={options} data={chartData} />
-      </React.Fragment>
-    );
+    return <Bar options={options} data={chartData} />;
   }
 }

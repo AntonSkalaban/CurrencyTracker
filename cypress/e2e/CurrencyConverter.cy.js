@@ -1,6 +1,7 @@
 describe("CurrencyConverter Component", () => {
   beforeEach(() => {
     cy.visit("/");
+
     cy.get("h3").contains("Commercial Dollar").click();
   });
 
