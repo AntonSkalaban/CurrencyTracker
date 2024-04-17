@@ -36,7 +36,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ options, onChange }) => {
   return (
     <>
       <StyledDropdownConainer ref={ref}>
-        <StyledDropdownHeader onClick={handleClick}>
+        <StyledDropdownHeader data-testid={"dropdown"} onClick={handleClick}>
           <StyledDropdownText>{selectValue}</StyledDropdownText>
           <StyledDropdownVector />
         </StyledDropdownHeader>
