@@ -44,11 +44,12 @@ export const StyledDropdownText = styled(StyledP)`
 `;
 
 export const StyledDropdownBody = styled.div`
+  position: absolute;
+  top: 40px;
+
   width: 100%;
   height: 340px;
   overflow: scroll;
-  position: absolute;
-  top: 40px;
 
   background-color: ${({ theme }) => theme.colors.bgMain};
 `;

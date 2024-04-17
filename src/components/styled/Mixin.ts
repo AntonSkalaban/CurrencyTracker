@@ -18,3 +18,12 @@ export const greenGradientText = css`
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 `;
+
+export const textSecondary = css`
+  font-style: normal;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #898989;
+`;
