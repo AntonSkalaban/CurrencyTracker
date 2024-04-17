@@ -5,7 +5,7 @@ export const StyledLinksList = styled.div`
   width: 157px;
 
   @media ${({ theme }) => theme.media.medium} {
-    width: 120px;
+    width: 110px;
   }
 `;
 

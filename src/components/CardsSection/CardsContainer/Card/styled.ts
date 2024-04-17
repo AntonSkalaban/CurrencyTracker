@@ -25,22 +25,6 @@ export const StyledCardContainer = styled.div`
   }
 `;
 
-export const StyledIconContainer = styled.div`
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  background-color: pink;
-
-  @media ${({ theme }) => theme.media.medium} {
-    width: 60px;
-    height: 60px;
-  }
-  @media ${({ theme }) => theme.media.extraSmall} {
-    width: 50px;
-    height: 50px;
-  }
-`;
-
 export const StyledCardTextContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -47,3 +47,18 @@ export const Title3 = styled.h3`
     line-height: 30px;
   }
 `;
+
+export const StyledCardIconContainer = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+
+  @media ${({ theme }) => theme.media.medium} {
+    width: 60px;
+    height: 60px;
+  }
+  @media ${({ theme }) => theme.media.extraSmall} {
+    width: 50px;
+    height: 50px;
+  }
+`;

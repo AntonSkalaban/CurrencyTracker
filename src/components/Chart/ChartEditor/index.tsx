@@ -15,7 +15,7 @@ interface ChartEditorState {
   maxVal: string;
 }
 
-export class ChartEditor extends React.Component<ChartEditorProps, ChartEditorState> {
+export class ChartEditor extends React.PureComponent<ChartEditorProps, ChartEditorState> {
   state = {
     date: dateOptions[0].value,
     minVal: "",

@@ -1,5 +1,6 @@
 import React from "react";
 import { Chart } from "components/Chart";
+import { ChartCurrencyCard } from "components/Chart/ChartCurrencyCard";
 import { ChartEditor } from "components/Chart/ChartEditor";
 import { Dropdown } from "components/Dropdown";
 import { Wrapper } from "components/UI";
@@ -33,6 +34,7 @@ export class Timeline extends React.Component {
     return (
       <Wrapper>
         <Dropdown options={currencyOptions} onChange={this.handleCurChange} />{" "}
+        <ChartCurrencyCard curCode={curCode} />
         <ChartEditor changeData={this.hanldeDataChange} />
         <Chart data={data} curCode={curCode} setData={(val) => this.setState({ data: val })} />;
       </Wrapper>

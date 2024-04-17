@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { StyledP, Title3 } from "components/styled";
+import { StyledCardIconContainer, StyledP, Title3 } from "components/styled";
 import { setModalData, toggleModal } from "store/slice";
-import { StyledCardContainer, StyledCardTextContainer, StyledIconContainer } from "./styled";
+import { StyledCardContainer, StyledCardTextContainer } from "./styled";
 
 interface CardProps {
   img: React.ReactNode;
@@ -31,7 +31,7 @@ export const Card: React.FC<CardProps> = ({
 
   return (
     <StyledCardContainer onClick={hanldeClick}>
-      <StyledIconContainer>{img}</StyledIconContainer>
+      <StyledCardIconContainer>{img}</StyledCardIconContainer>
       <StyledCardTextContainer>
         <Title3>{title}</Title3>
         {isFetching ? <StyledP>Fetching...</StyledP> : <StyledP>{subtitle}</StyledP>}
