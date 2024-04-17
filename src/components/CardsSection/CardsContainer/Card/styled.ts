@@ -13,7 +13,11 @@ export const StyledCardContainer = styled.div`
 
   border: 1px solid rgba(71, 71, 71, 1);
   border-radius: 8px;
-
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+  }
   @media ${({ theme }) => theme.media.large} {
     padding: 20px 20px;
     gap: 15px;
