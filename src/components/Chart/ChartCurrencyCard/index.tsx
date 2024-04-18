@@ -1,6 +1,6 @@
 import React from "react";
-import { StyledCardIconContainer, StyledP, Title2 } from "components/styled";
-import { defQuotesData } from "constants/cardsData";
+import { StyledCardIconContainer, StyledP, Title2 } from "components";
+import { defQuotesData } from "constants/index";
 import { CardTextContainer, StyledChartCurrencyCard } from "./styled";
 
 interface ChartCurrencyCardProps {

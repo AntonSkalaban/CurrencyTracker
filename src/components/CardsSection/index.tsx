@@ -1,6 +1,6 @@
-import { CardsContainer } from "components/CardsSection/CardsContainer";
+import { Wrapper } from "components";
 import { CardData } from "types/card";
-import { Wrapper } from "..";
+import { CardsContainer } from "./CardsContainer";
 import { StyledCardsSection, StyledCardsSectionHeader, StyledCardsSectionTitle } from "./styled";
 
 interface CardsSectionProps {

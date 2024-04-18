@@ -1,4 +1,4 @@
-import { PagesNames, PagesPaths } from "types/pages";
+import { PagesNames, PagesPaths } from "types";
 import { StyledNav, StyledNavItem, StyledNavLink } from "./styled";
 
 const pages = [

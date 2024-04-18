@@ -60,6 +60,7 @@
     "msw": "^2.2.13",
     "prettier": "^3.2.5",
     "react-map-gl": "^7.1.7",
+    "start-server-and-test": "^2.0.3",
     "style-loader": "^3.3.4",
     "typescript": "^5.3.3",
     "typescript-eslint": "^7.0.2",

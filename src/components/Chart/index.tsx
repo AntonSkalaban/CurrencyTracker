@@ -9,15 +9,9 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { Title2 } from "components/styled";
-import { LoadingSpinner } from "components/UI";
-import { options } from "constants/chartData";
-import { fetchHistory } from "utils/api/historyApi";
-import { cache } from "utils/cache";
-import { getChartData } from "utils/helpers/chartData";
-import { Subject } from "utils/observer";
-import { PopupObserver } from "utils/PopUpObserver";
-import { shouldDataUpdate } from "utils/shouldDataUpdate";
+import { LoadingSpinner, Title2 } from "components";
+import { options } from "constants/index";
+import { cache, fetchHistory, getChartData, popupObserver, shouldDataUpdate, Subject } from "utils";
 import { HistoryCache, HistoryData } from "types";
 import { ChartContainer } from "./styled";
 
@@ -41,7 +35,7 @@ export class Chart extends React.Component<ChartProps, ChartState> {
 
   subject = new Subject<string>();
 
-  popupObserver = new PopupObserver();
+  popupObserver = new popupObserver();
 
   getGraphData = async () => {
     const { curCode } = this.props;

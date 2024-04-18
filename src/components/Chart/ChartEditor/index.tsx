@@ -1,8 +1,6 @@
 import React, { FormEvent } from "react";
-import { Dropdown } from "components/Dropdown";
-import { NumberInput } from "components/NumberInput";
-import { StyledP, Title3 } from "components/styled";
-import { dateOptions } from "constants/timeLine";
+import { Dropdown, NumberInput, StyledP, Title3 } from "components";
+import { dateOptions } from "constants/index";
 import { ChartEditorButton, ChartEditorContainer, ChartEditorForm, InputContainer } from "./styled";
 
 interface ChartEditorProps {

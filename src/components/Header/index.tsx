@@ -1,5 +1,4 @@
-import { BurgerMenu } from "components/BurgerMenu";
-import { ThemeToggle, Wrapper } from "..";
+import { BurgerMenu, ThemeToggle, Wrapper } from "components";
 import { Nav } from "./Nav";
 import {
   LargeMediaContainer,

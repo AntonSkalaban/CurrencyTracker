@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Overlay } from "components/UI/Overlay";
+import { Overlay } from "components";
 import { BurgerIcon, BurgerIconContainer, BurgerMenuContent } from "./styled";
 
 interface BurgerMenuProsp {

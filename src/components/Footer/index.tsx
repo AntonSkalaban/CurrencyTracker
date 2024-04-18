@@ -1,7 +1,7 @@
 import React from "react";
+import { Wrapper } from "components";
 import { links, text } from "constants/index";
 import Logo from "assets/svg/logo.svg";
-import { Wrapper } from "..";
 import { LinksList } from "./LinksList";
 import {
   FooterContentContainer,

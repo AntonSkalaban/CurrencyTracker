@@ -1,5 +1,5 @@
 import axios from "axios";
-import { dateController } from "utils/helpers";
+import { dateController } from "utils";
 import { HistoryData } from "types";
 
 const url = process.env.COIN_API_URL;

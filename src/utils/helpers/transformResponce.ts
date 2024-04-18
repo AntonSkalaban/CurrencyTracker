@@ -1,5 +1,4 @@
-import { ConvertResponce } from "types";
-import { CardData, DefaultCardData } from "types";
+import { CardData, ConvertResponce, DefaultCardData } from "types";
 
 export const transformResponse = (res: ConvertResponce[], defData: DefaultCardData[]) => {
   return res.reduce((acc, { success, result }) => {

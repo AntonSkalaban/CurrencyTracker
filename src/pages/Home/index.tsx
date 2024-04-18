@@ -7,7 +7,7 @@ import { Title2 } from "components/styled";
 import { getModalStatus, toggleModal } from "store/slice";
 import { defQuotesData, defStocksData } from "constants/cardsData";
 import { cache, shouldDataUpdate, transformResponse } from "utils";
-import { getRate } from "utils/api/api";
+import { getRate } from "utils/api/rateApi";
 import { ConvertResponce, CyrrencyCache } from "types";
 
 export const Home: React.FC = () => {

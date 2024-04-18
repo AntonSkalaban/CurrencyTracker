@@ -2,7 +2,7 @@ import React, { ChangeEvent } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setCurrencyValue } from "store/slice";
-import { SearchSuggestions } from "./SearchSuggestions";
+import { SearchHints } from "./SearchHints";
 import {
   ElasticSearchContainer,
   StyledInput,
@@ -71,7 +71,7 @@ export class DefaultElasticSearch extends React.Component<ElasticSearchProps, El
         <StyledSearchButton tabIndex={0} onClick={this.handleClick}>
           <StyledSearchIcon />
         </StyledSearchButton>
-        <SearchSuggestions value={debouncedValue} onClick={this.hanldeHintClick()} />
+        <SearchHints value={debouncedValue} onClick={this.hanldeHintClick()} />
       </ElasticSearchContainer>
     );
   }

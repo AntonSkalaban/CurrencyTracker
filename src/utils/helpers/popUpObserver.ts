@@ -1,9 +1,9 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { PopUp } from "components/PopUp";
+import { PopUp } from "components";
 import { Observer } from "./observer";
 
-export class PopupObserver implements Observer<string> {
+export class popupObserver implements Observer<string> {
   timerId: NodeJS.Timeout | null = null;
 
   update(): void {

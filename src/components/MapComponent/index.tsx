@@ -1,9 +1,9 @@
 import React from "react";
 import Map, { Marker } from "react-map-gl/maplibre";
 import { connect } from "react-redux";
-import { Title2 } from "components/styled";
+import { Title2 } from "components";
 import { RootState } from "store/index";
-import { banksData } from "constants/banksData";
+import { banksData } from "constants/index";
 import { Bank } from "types/index";
 import { mapState, mapStyleUrl } from "./constants";
 

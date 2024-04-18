@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { StyledCardIconContainer, StyledP, Title3 } from "components/styled";
+import { StyledCardIconContainer, StyledP, Title3 } from "components";
 import { setModalData, toggleModal } from "store/slice";
 import { StyledCardContainer, StyledCardTextContainer } from "./styled";
 

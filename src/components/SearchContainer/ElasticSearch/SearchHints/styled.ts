@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledSearchSuggestionsContainer = styled.div`
+export const StyledSearchHintsContainer = styled.div`
   width: 100%;
   height: fit-content;
   position: absolute;
@@ -13,7 +13,7 @@ export const StyledSearchSuggestionsContainer = styled.div`
   }
 `;
 
-export const StyledSearchSuggestionsLi = styled.li`
+export const StyledSearchHintsLi = styled.li`
   line-height: 40px;
   font-size: 18px;
   line-height: 27px;

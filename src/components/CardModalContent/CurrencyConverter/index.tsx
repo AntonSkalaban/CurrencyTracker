@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Dropdown } from "components/Dropdown";
-import { NumberInput } from "components/NumberInput";
-import { StyledP } from "components/styled";
+import { Dropdown, NumberInput, StyledP } from "components";
 import { getModalData } from "store/slice";
-import { defQuotesData } from "constants/cardsData";
-import { getRate } from "utils/api/api";
-import { useDebounce } from "utils/hooks";
-import { cache, shouldDataUpdate } from "utils/index";
-import { RateCache } from "types/index";
+import { defQuotesData } from "constants/index";
+import { cache, getRate, shouldDataUpdate, useDebounce } from "utils";
+import { RateCache } from "types";
 import { ConvertContainer } from "./styled";
 
 export const CurrencyConverter: React.FC = () => {

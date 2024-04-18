@@ -1,6 +1,6 @@
-import { defQuotesData } from "constants/cardsData";
+import { defQuotesData } from "constants/index";
 
-export const getSuggestionsValues = (value: string) => {
+export const getHintsValues = (value: string) => {
   return defQuotesData.reduce((acc, val) => {
     if (val.code.includes(value.toUpperCase())) acc.push(val.code);
     return acc;

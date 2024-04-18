@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { Title3 } from "components/styled";
+import { Title3 } from "components";
 import { getModalData } from "store/slice";
-import { quotesIcons } from "constants/icons";
+import { quotesIcons } from "constants/index";
 import { CurrencyConverter } from "./CurrencyConverter";
 import { StyledLogoContainer, StyledModalContentContainer } from "./styled";
 

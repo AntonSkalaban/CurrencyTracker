@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { greenGradientText } from "components/styled";
+import { greenGradientText } from "components/styled/Mixin";
 import Logo from "assets/svg/logo-big.svg";
 
 export const StyledTitleSection = styled.section`

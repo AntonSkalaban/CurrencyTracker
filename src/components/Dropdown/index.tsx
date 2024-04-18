@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { useClickOutside } from "utils/hooks/useClickOutside";
+import { useClickOutside } from "utils";
 import {
   StyledDropdownBody,
   StyledDropdownConainer,

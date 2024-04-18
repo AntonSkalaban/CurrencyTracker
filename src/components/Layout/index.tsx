@@ -1,7 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Footer, TitleSection } from "components";
-import { LastUpdate } from "components/LastUpdate/idndex";
-import { Header } from "../Header";
+import { Footer, Header, LastUpdate, TitleSection } from "components";
 
 export const Layout: React.FC = () => {
   return (

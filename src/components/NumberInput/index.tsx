@@ -1,4 +1,4 @@
-import { validateNumber } from "utils/helpers";
+import { validateNumber } from "utils";
 import { StyledNumberInput } from "./styled";
 
 interface NumberInputProps {
