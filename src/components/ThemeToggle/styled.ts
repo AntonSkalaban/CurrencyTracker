@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { flexSpaceBetweenMixin } from "components/styled";
-import { ThemeEnum } from "types/defaultTheme";
+import { ThemeEnum } from "types";
 
 export const SwitchInput = styled.input`
   height: 0;

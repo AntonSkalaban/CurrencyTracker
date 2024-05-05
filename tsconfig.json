@@ -29,5 +29,5 @@
         "api/*": ["api/*"],
      }
     },
-    "include": ["src", "src/types/react-app-env.d.ts", "src/tests/mock"]
+    "include": ["src", "src/typings/theme.d.ts", "src/tests/mock"]
   }

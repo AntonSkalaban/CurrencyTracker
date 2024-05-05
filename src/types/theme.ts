@@ -1,3 +1,8 @@
+export enum ThemeEnum {
+  light = "light",
+  dark = "dark",
+}
+
 export interface Colors {
   ligthGreen: string;
   lightGrey: string;

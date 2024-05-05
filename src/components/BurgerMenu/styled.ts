@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-import { ThemeEnum } from "types/defaultTheme";
+import { ThemeEnum } from "types";
 
 export const BurgerIconContainer = styled.div`
   width: 100%;
