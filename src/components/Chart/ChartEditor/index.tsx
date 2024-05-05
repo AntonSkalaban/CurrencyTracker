@@ -1,6 +1,7 @@
-import React, { FormEvent } from "react";
-import { Dropdown, NumberInput, StyledP, Title3 } from "components";
+import { FormEvent, PureComponent } from "react";
+import { Dropdown, H3, NumberInput, P } from "components";
 import { dateOptions } from "constants/index";
+
 import { ChartEditorButton, ChartEditorContainer, ChartEditorForm, InputContainer } from "./styled";
 
 interface ChartEditorProps {
@@ -13,7 +14,7 @@ interface ChartEditorState {
   maxVal: string;
 }
 
-export class ChartEditor extends React.PureComponent<ChartEditorProps, ChartEditorState> {
+export class ChartEditor extends PureComponent<ChartEditorProps, ChartEditorState> {
   state = {
     date: dateOptions[0].value,
     minVal: "",
@@ -39,19 +40,19 @@ export class ChartEditor extends React.PureComponent<ChartEditorProps, ChartEdit
 
     return (
       <ChartEditorContainer>
-        <Title3>Try yourself!</Title3>
+        <H3>Try yourself!</H3>
 
         <ChartEditorForm onSubmit={this.hanldeSubmit}>
           <InputContainer>
-            <StyledP>Change date: </StyledP>
+            <P>Change date: </P>
             <Dropdown options={dateOptions} onChange={this.hanldeDropwdownChange} />
           </InputContainer>
           <InputContainer>
-            <StyledP>Min value: </StyledP>
+            <P>Min value: </P>
             <NumberInput name="minVal" onChange={this.hanldeInputChange} value={minVal} />
           </InputContainer>
           <InputContainer>
-            <StyledP>Max value: </StyledP>
+            <P>Max value: </P>
             <NumberInput name="maxVal" onChange={this.hanldeInputChange} value={maxVal} />
           </InputContainer>
           <ChartEditorButton>Submit</ChartEditorButton>

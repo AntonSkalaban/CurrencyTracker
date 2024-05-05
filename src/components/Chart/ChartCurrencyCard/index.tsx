@@ -1,20 +1,21 @@
-import React from "react";
-import { StyledCardIconContainer, StyledP, Title2 } from "components";
+import { Component } from "react";
+import { H2, P, StyledCardIconContainer } from "components";
 import { defQuotesData } from "constants/index";
+
 import { CardTextContainer, StyledChartCurrencyCard } from "./styled";
 
 interface ChartCurrencyCardProps {
   curCode: string;
 }
-export class ChartCurrencyCard extends React.Component<ChartCurrencyCardProps> {
+export class ChartCurrencyCard extends Component<ChartCurrencyCardProps> {
   render() {
     const card = defQuotesData.find((el) => el.code === this.props.curCode);
     return (
       <StyledChartCurrencyCard>
         <StyledCardIconContainer>{card?.img}</StyledCardIconContainer>
         <CardTextContainer>
-          <Title2>{card?.title}</Title2>
-          <StyledP>{card?.code}</StyledP>
+          <H2>{card?.title}</H2>
+          <P>{card?.code}</P>
         </CardTextContainer>
       </StyledChartCurrencyCard>
     );

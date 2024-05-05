@@ -1,5 +1,5 @@
 import { keyframes, styled } from "styled-components";
-import { flexCenterMixin, StyledP } from "components/styled";
+import { flexCenterMixin, P } from "components/styled";
 
 const flash = keyframes`
   0% {
@@ -15,7 +15,7 @@ const flash = keyframes`
   }
 `;
 
-export const StyledText = styled(StyledP)`
+export const StyledText = styled(P)`
   text-align: center;
 `;
 

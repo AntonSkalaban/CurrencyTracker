@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Title2 } from "components/styled";
+import { H2 } from "components/styled";
 
 export const StyledCardsSection = styled.section`
   margin-top: 60px;
@@ -19,4 +19,4 @@ export const StyledCardsSectionHeader = styled.div`
   }
 `;
 
-export const StyledCardsSectionTitle = styled(Title2)``;
+export const StyledCardsSectionTitle = styled(H2)``;

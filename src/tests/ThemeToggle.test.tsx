@@ -6,6 +6,10 @@ import { fireEvent, render } from "./test-utils";
 
 import "jest-styled-components";
 
+jest.mock("react-map-gl/maplibre", () => ({
+  Map: () => ({}),
+}));
+
 describe("Should toggle theme", () => {
   it("Should change state in redux", () => {
     const { getAllByTestId } = render(

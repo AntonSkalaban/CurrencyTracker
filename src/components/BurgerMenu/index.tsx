@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Overlay } from "components";
+
 import { BurgerIcon, BurgerIconContainer, BurgerMenuContent } from "./styled";
 
 interface BurgerMenuProsp {
   children: React.ReactNode;
 }
 
-export const BurgerMenu: React.FC<BurgerMenuProsp> = ({ children }) => {
+export const BurgerMenu: FC<BurgerMenuProsp> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen((prev) => !prev);
   return (

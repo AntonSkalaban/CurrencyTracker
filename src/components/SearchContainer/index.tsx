@@ -1,13 +1,14 @@
-import React from "react";
-import { Title3 } from "components/styled";
+import { Component } from "react";
+import { H3 } from "components/styled";
+
 import { ElasticSearch } from "./ElasticSearch";
 import { StyledSearchContainer } from "./styled";
 
-export class SearchContainer extends React.Component {
+export class SearchContainer extends Component {
   render() {
     return (
       <StyledSearchContainer>
-        <Title3>Search currency in the bank</Title3>
+        <H3>Search currency in the bank</H3>
         <ElasticSearch />
       </StyledSearchContainer>
     );

@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import {
   StyledBigSircle,
   StyledLastUpdateContainer,
@@ -5,7 +7,7 @@ import {
   StyledText,
 } from "./styled";
 
-export const LastUpdate: React.FC = () => {
+export const LastUpdate: FC = () => {
   return (
     <StyledLastUpdateContainer>
       {" "}

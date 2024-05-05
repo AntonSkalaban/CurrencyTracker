@@ -1,5 +1,7 @@
+import { FC } from "react";
 import { Wrapper } from "components";
-import { CardData } from "types/card";
+import { CardData } from "types";
+
 import { CardsContainer } from "./CardsContainer";
 import { StyledCardsSection, StyledCardsSectionHeader, StyledCardsSectionTitle } from "./styled";
 
@@ -10,12 +12,7 @@ interface CardsSectionProps {
   withModal?: boolean;
 }
 
-export const CardsSection: React.FC<CardsSectionProps> = ({
-  title,
-  data,
-  isFetching,
-  withModal,
-}) => {
+export const CardsSection: FC<CardsSectionProps> = ({ title, data, isFetching, withModal }) => {
   return (
     <StyledCardsSection>
       <Wrapper>

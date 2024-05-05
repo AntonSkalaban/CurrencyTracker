@@ -11,7 +11,6 @@ export const links: { [key: string]: { [key: string]: string } } = {
     Sparks: "",
     Snaps: "",
   },
-
   Community: {
     Ideas: "",
     Streams: "",

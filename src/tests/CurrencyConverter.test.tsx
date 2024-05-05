@@ -9,6 +9,10 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
+jest.mock("react-map-gl/maplibre", () => ({
+  Map: () => ({}),
+}));
+
 describe("CurrencyConverter component", () => {
   it("displays fetching message when loading data", () => {
     const { getByText } = render(<CurrencyConverter />);

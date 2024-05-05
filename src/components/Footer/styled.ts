@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { flexSpaceBetweenMixin, greenGradientText, StyledP } from "components/styled";
+import { flexSpaceBetweenMixin, greenGradientText, P } from "components/styled";
 
 export const StyledFooter = styled.footer`
   margin-top: 96px;
@@ -43,7 +43,7 @@ export const FooterTextContainerTitle = styled.h4`
   }
 `;
 
-export const FooterText = styled(StyledP)`
+export const FooterText = styled(P)`
   font-size: 24px;
   line-height: 36px;
 

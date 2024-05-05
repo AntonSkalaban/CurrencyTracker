@@ -1,4 +1,4 @@
-import React from "react";
+import { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import {
   BarElement,
@@ -9,10 +9,12 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { LoadingSpinner, Title2 } from "components";
+import { H2, LoadingSpinner } from "components";
 import { options } from "constants/index";
-import { cache, fetchHistory, getChartData, popupObserver, shouldDataUpdate, Subject } from "utils";
+import { fetchHistory } from "api";
+import { cache, getChartData, popupObserver, shouldDataUpdate, Subject } from "utils";
 import { HistoryCache, HistoryData } from "types";
+
 import { ChartContainer } from "./styled";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -27,7 +29,7 @@ interface ChartState {
   isError: boolean;
   isFetching: boolean;
 }
-export class Chart extends React.Component<ChartProps, ChartState> {
+export class Chart extends Component<ChartProps, ChartState> {
   state = {
     isError: false,
     isFetching: false,
@@ -100,7 +102,7 @@ export class Chart extends React.Component<ChartProps, ChartState> {
     if (isError || (!data?.length && !isFetching))
       return (
         <ChartContainer>
-          <Title2>Error..</Title2>
+          <H2>Error..</H2>
         </ChartContainer>
       );
 

@@ -1,5 +1,7 @@
+import { FC } from "react";
 import { createPortal } from "react-dom";
 import { Overlay } from "components";
+
 import { StyledCloseBtn, StyledModalContainer, StyledModalContent } from "./styeld";
 
 interface ModalProps {
@@ -7,7 +9,7 @@ interface ModalProps {
   close: () => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({ children, close }) => {
+export const Modal: FC<ModalProps> = ({ children, close }) => {
   return (
     <>
       {createPortal(

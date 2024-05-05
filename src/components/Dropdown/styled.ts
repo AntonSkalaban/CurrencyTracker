@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { flexSpaceBetweenMixin, StyledP } from "components/styled";
+import { flexSpaceBetweenMixin, P } from "components/styled";
 import Vector from "assets/svg/vector.svg";
 
 export const StyledDropdownConainer = styled.div`
@@ -31,7 +31,7 @@ export const StyledDropdownVector = styled(Vector)`
   }
 `;
 
-export const StyledDropdownText = styled(StyledP)`
+export const StyledDropdownText = styled(P)`
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
