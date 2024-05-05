@@ -1,4 +1,5 @@
 import { HistoryData } from "types";
+
 import { dateController } from "./dateController";
 
 export const changeChartData = (

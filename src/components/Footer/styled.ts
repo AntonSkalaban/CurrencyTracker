@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { flexSpaceBetweenMixin, greenGradientText, P } from "components/styled";
+import { flexSpaceBetweenMixin, greenGradientText, P, textSecondary } from "components/styled";
 
 export const StyledFooter = styled.footer`
   margin-top: 96px;
@@ -55,4 +55,13 @@ export const FooterText = styled(P)`
 
 export const FooterLinksContainer = styled.div`
   ${flexSpaceBetweenMixin}
+`;
+
+export const FooterBottomText = styled.div`
+  ${textSecondary};
+  text-align: center;
+  margin-top: 50px;
+  @media ${({ theme }) => theme.media.medium} {
+    font-size: 18px;
+  }
 `;

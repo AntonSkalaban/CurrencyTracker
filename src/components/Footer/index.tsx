@@ -1,10 +1,11 @@
 import { FC } from "react";
-import { Wrapper } from "components";
+import { P, Wrapper } from "components";
 import { links, text } from "constants/index";
 import Logo from "assets/svg/logo.svg";
 
 import { LinksList } from "./LinksList";
 import {
+  FooterBottomText,
   FooterContentContainer,
   FooterLinksContainer,
   FooterText,
@@ -31,6 +32,10 @@ export const Footer: FC = () => {
             ))}
           </FooterLinksContainer>
         </FooterContentContainer>
+
+        <FooterBottomText>
+          Startsup © 2023-{new Date().getFullYear()}, All Rights Reserved
+        </FooterBottomText>
       </Wrapper>
     </StyledFooter>
   );

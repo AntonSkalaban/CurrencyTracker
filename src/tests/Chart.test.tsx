@@ -1,6 +1,7 @@
 import { Timeline } from "pages/Timeline";
 import { Chart } from "components";
 import { cache } from "utils";
+
 import { chartData } from "./mock/data";
 import { render, waitFor } from "./test-utils";
 

@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+
 import { CardModalSlice, SearchCurrencySlice, ThemeSlice } from "./slice";
 
 export const store = configureStore({
