@@ -46,7 +46,7 @@ export const Home: React.FC = () => {
   if (isError) return <H2>Ooops...</H2>;
 
   return (
-    <>
+    <main>
       <CardsSection title="Stocks" data={defStocksData} isFetching={isFetching} />
       <CardsSection title="Quotes" data={quotesData} isFetching={isFetching} withModal />
 
@@ -55,6 +55,6 @@ export const Home: React.FC = () => {
           <CardModalContent />
         </Modal>
       )}
-    </>
+    </main>
   );
 };

@@ -32,12 +32,14 @@ export class Timeline extends React.Component {
     const { data, curCode } = this.state;
 
     return (
-      <Wrapper>
-        <Dropdown options={currencyOptions} onChange={this.handleCurChange} />{" "}
-        <ChartCurrencyCard curCode={curCode} />
-        <ChartEditor changeData={this.hanldeDataChange} />
-        <Chart data={data} curCode={curCode} setData={(val) => this.setState({ data: val })} />;
-      </Wrapper>
+      <main>
+        <Wrapper>
+          <Dropdown options={currencyOptions} onChange={this.handleCurChange} />{" "}
+          <ChartCurrencyCard curCode={curCode} />
+          <ChartEditor changeData={this.hanldeDataChange} />
+          <Chart data={data} curCode={curCode} setData={(val) => this.setState({ data: val })} />;
+        </Wrapper>
+      </main>
     );
   }
 }

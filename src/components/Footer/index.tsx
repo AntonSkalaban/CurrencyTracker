@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { P, Wrapper } from "components";
+import { Wrapper } from "components";
 import { links, text } from "constants/index";
 import Logo from "assets/svg/logo.svg";
 

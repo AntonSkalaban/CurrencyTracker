@@ -5,10 +5,10 @@ import { SearchContainer } from "components/SearchContainer";
 export class BankCard extends React.Component {
   render() {
     return (
-      <>
+      <main>
         <SearchContainer />
         <MapComponent />
-      </>
+      </main>
     );
   }
 }

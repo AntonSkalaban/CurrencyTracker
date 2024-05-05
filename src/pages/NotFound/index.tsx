@@ -1,5 +1,9 @@
 import { H2 } from "components/styled";
 
 export const NotFound = () => {
-  return <H2>Not found...(</H2>;
+  return (
+    <main>
+      <H2>Not found...(</H2>
+    </main>
+  );
 };
