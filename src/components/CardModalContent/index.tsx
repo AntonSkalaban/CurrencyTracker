@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useSelector } from "react-redux";
+
 import { H3 } from "components";
 import { getModalData } from "store/slice";
 import { quotesIcons } from "constants/index";

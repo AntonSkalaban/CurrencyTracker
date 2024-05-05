@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+
 import PoppinsMedium from "assets/fonts/Poppins/Poppins-Medium.ttf";
 import PoppinsRegular from "assets/fonts/Poppins/Poppins-Regular.ttf";
 

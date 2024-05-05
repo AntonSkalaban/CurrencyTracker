@@ -1,4 +1,4 @@
-import { Colors, Theme } from "./theme";
+import { Colors } from "./theme";
 
 import "styled-components";
 
@@ -12,10 +12,4 @@ export interface DefaultColors extends Colors {
   bgSecondary: string;
   fontMain: string;
   fontSecondary: string;
-}
-declare module "styled-components" {
-  export interface DefaultTheme extends Theme {
-    type: ThemeEnum;
-    colors: DefaultColors;
-  }
 }

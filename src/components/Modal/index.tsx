@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { createPortal } from "react-dom";
+
 import { Overlay } from "components";
 
 import { StyledCloseBtn, StyledModalContainer, StyledModalContent } from "./styeld";

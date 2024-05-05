@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { BurgerMenu, ThemeToggle, Wrapper } from "components";
 
 import { Nav } from "./Nav";

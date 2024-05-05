@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+
 import { H2 } from "components/styled";
 
 export const StyledCardsSection = styled.section`

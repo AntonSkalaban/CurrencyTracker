@@ -1,4 +1,5 @@
 import { keyframes, styled } from "styled-components";
+
 import { flexCenterMixin, P } from "components/styled";
 
 const flash = keyframes`

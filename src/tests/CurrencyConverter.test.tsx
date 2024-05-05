@@ -1,5 +1,6 @@
 import { fireEvent, waitFor } from "@testing-library/react";
 import { setupServer } from "msw/node";
+
 import { CurrencyConverter } from "components/CardModalContent/CurrencyConverter";
 
 import { handlers } from "./mock/handlers";

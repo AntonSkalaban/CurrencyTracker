@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+
 import { flexSpaceBetweenMixin, greenGradientText } from "components/styled";
 
 export const StyledNav = styled.nav`

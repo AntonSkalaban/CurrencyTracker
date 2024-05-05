@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+
 import { ThemeEnum } from "types";
 import SearchIcon from "assets/svg/search.svg";
 

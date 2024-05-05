@@ -1,4 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from "react";
+
 import { H2, P } from "components";
 
 interface ErrorBoundaryProps {

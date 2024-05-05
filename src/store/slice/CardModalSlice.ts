@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import { CardData } from "types/card";
 
 const initialState: { isOpen: boolean; data: Omit<CardData, "img"> } = {

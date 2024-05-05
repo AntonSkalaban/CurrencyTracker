@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { CardData } from "types/card";
 
 import { Card } from "./Card";

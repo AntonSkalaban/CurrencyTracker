@@ -1,6 +1,7 @@
 import { Component } from "react";
 import Map, { Marker } from "react-map-gl/maplibre";
 import { connect } from "react-redux";
+
 import { H2 } from "components";
 import { RootState } from "store/index";
 import { banksData } from "constants/index";

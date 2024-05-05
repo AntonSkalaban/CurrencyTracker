@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { PagesNames, PagesPaths } from "types";
 
 import { StyledNav, StyledNavItem, StyledNavLink } from "./styled";

@@ -1,4 +1,5 @@
 import { ChangeEvent, FC } from "react";
+
 import { validateNumber } from "utils";
 
 import { StyledNumberInput } from "./styled";

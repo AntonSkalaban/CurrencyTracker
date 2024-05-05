@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+
 import { BankCard, Home, NotFound, Timeline } from "pages";
 import { ErrorBoundary, Layout } from "components";
 import { FontStyles, GeneralStyles, NormalStyles } from "components/styled";

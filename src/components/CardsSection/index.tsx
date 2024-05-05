@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { Wrapper } from "components";
 import { CardData } from "types";
 

@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+
 import { Dropdown, NumberInput, P } from "components";
 import { getModalData } from "store/slice";
 import { defQuotesData } from "constants/index";

@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+
 import { ThemeEnum } from "types/defaultTheme";
 
 export const BurgerIconContainer = styled.div`

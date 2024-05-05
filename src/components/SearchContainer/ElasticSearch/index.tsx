@@ -1,6 +1,7 @@
 import { ChangeEvent, Component } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
+
 import { setCurrencyValue } from "store/slice";
 
 import { SearchHints } from "./SearchHints";

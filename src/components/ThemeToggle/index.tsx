@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+
 import { getThemeType, setTheme } from "store/slice";
 import { darkTheme, lightTheme } from "constants/index";
 import { ThemeEnum } from "types";

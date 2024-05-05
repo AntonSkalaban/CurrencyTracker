@@ -1,4 +1,5 @@
 import { Component } from "react";
+
 import { getHintsValues } from "utils/helpers";
 
 import { StyledSearchHintsContainer, StyledSearchHintsLi } from "./styled";

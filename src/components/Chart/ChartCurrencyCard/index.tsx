@@ -1,4 +1,5 @@
 import { Component } from "react";
+
 import { H2, P, StyledCardIconContainer } from "components";
 import { defQuotesData } from "constants/index";
 
