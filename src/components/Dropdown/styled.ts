@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+
 import { flexSpaceBetweenMixin, P } from "components/styled";
 import Vector from "assets/svg/vector.svg";
 

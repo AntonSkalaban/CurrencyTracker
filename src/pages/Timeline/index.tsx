@@ -1,18 +1,15 @@
-import React from "react";
-import { Chart } from "components/Chart";
-import { ChartCurrencyCard } from "components/Chart/ChartCurrencyCard";
-import { ChartEditor } from "components/Chart/ChartEditor";
-import { Dropdown } from "components/Dropdown";
-import { Wrapper } from "components/UI";
+import { Component } from "react";
+
+import { Chart, ChartCurrencyCard, ChartEditor, Dropdown, Wrapper } from "components";
 import { currencyOptions } from "constants/index";
-import { changeChartData } from "utils/helpers/chartData";
+import { changeChartData } from "utils";
 import { HistoryData } from "types/index";
 
 interface TimelineState {
   data: HistoryData[];
   curCode: string;
 }
-export class Timeline extends React.Component {
+export class Timeline extends Component {
   state: TimelineState = {
     data: [],
     curCode: "EUR",

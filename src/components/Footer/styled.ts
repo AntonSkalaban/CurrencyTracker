@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+
 import { flexSpaceBetweenMixin, greenGradientText, P, textSecondary } from "components/styled";
 
 export const StyledFooter = styled.footer`

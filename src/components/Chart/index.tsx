@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
+
 import { H2, LoadingSpinner } from "components";
 import { options } from "constants/index";
 import { fetchHistory } from "api";

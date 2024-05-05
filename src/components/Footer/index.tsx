@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { Wrapper } from "components";
 import { links, text } from "constants/index";
 import Logo from "assets/svg/logo.svg";
