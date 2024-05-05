@@ -1,4 +1,7 @@
+import { ChangeEvent, FC } from "react";
+
 import { validateNumber } from "utils";
+
 import { StyledNumberInput } from "./styled";
 
 interface NumberInputProps {
@@ -7,8 +10,8 @@ interface NumberInputProps {
   onChange: ({ name, value }: { name: string; value: string }) => void;
 }
 
-export const NumberInput: React.FC<NumberInputProps> = ({ name, value, onChange }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+export const NumberInput: FC<NumberInputProps> = ({ name, value, onChange }) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     onChange({ name, value: validateNumber(value) });
@@ -21,6 +24,6 @@ export const NumberInput: React.FC<NumberInputProps> = ({ name, value, onChange 
       value={value}
       onChange={handleChange}
       data-testid="number-input"
-    ></StyledNumberInput>
+    />
   );
 };

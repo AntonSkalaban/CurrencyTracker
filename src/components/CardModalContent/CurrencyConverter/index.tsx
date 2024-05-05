@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Dropdown, NumberInput, StyledP } from "components";
+
+import { Dropdown, NumberInput, P } from "components";
 import { getModalData } from "store/slice";
 import { defQuotesData } from "constants/index";
-import { cache, getRate, shouldDataUpdate, useDebounce } from "utils";
+import { getRate } from "api";
+import { useDebounce } from "hooks";
+import { cache, shouldDataUpdate } from "utils";
 import { RateCache } from "types";
+
 import { ConvertContainer } from "./styled";
 
-export const CurrencyConverter: React.FC = () => {
+export const CurrencyConverter: FC = () => {
   const { code } = useSelector(getModalData);
 
   const [amount, setAmount] = useState("1");
@@ -55,17 +59,17 @@ export const CurrencyConverter: React.FC = () => {
     setToCurCode(val);
   };
 
-  if (isError) return <StyledP>Error...</StyledP>;
+  if (isError) return <P>Error...</P>;
 
   return (
     <ConvertContainer>
       {isFetching ? (
-        <StyledP> Fetching... </StyledP>
+        <P> Fetching... </P>
       ) : (
         <>
           <NumberInput name={"amount"} value={amount} onChange={handleAmountChange} />
-          <StyledP>{code} = </StyledP>
-          <StyledP data-testid="converted-value">{convertedAmount.toFixed(2)}</StyledP>
+          <P>{code} = </P>
+          <P data-testid="converted-value">{convertedAmount.toFixed(2)}</P>
           <Dropdown
             options={defQuotesData.map(({ code }) => ({ name: code, value: code }))}
             onChange={handleCurCodeChange}

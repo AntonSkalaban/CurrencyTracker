@@ -1,4 +1,5 @@
 import { CardData, DefaultCardData } from "types/card";
+
 import { quotesIcons, stocksIcons } from "./icons";
 
 export const defStocksData: CardData[] = [

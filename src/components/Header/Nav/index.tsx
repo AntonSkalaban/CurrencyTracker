@@ -1,4 +1,7 @@
+import { FC } from "react";
+
 import { PagesNames, PagesPaths } from "types";
+
 import { StyledNav, StyledNavItem, StyledNavLink } from "./styled";
 
 const pages = [
@@ -8,7 +11,7 @@ const pages = [
   { name: PagesNames.Contato, path: PagesPaths.Contato },
 ];
 
-export const Nav = () => {
+export const Nav: FC = () => {
   return (
     <StyledNav>
       {pages.map(({ name, path }) => {

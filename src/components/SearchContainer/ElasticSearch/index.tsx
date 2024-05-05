@@ -1,7 +1,9 @@
-import React, { ChangeEvent } from "react";
+import { ChangeEvent, Component } from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
+
 import { setCurrencyValue } from "store/slice";
+
 import { SearchHints } from "./SearchHints";
 import {
   ElasticSearchContainer,
@@ -20,7 +22,7 @@ interface ElasticSearchProps {
   onCurrencySelect: (value: string) => void;
 }
 
-export class DefaultElasticSearch extends React.Component<ElasticSearchProps, ElasticSearchState> {
+export class DefaultElasticSearch extends Component<ElasticSearchProps, ElasticSearchState> {
   state = { value: "", debouncedValue: "", cuurency: "" };
 
   timer: NodeJS.Timeout | null = null;

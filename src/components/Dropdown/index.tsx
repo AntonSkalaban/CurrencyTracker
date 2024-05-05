@@ -1,5 +1,7 @@
-import React, { ChangeEvent, useState } from "react";
-import { useClickOutside } from "utils";
+import { ChangeEvent, FC, useState } from "react";
+
+import { useClickOutside } from "hooks";
+
 import {
   StyledDropdownBody,
   StyledDropdownConainer,
@@ -17,7 +19,7 @@ interface DropdownProps {
   onChange: (value: string) => void;
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ options, onChange }) => {
+export const Dropdown: FC<DropdownProps> = ({ options, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectValue, setSelectValue] = useState(options[0].name);
   const handleClick = () => {
@@ -43,34 +45,30 @@ export const Dropdown: React.FC<DropdownProps> = ({ options, onChange }) => {
         {isOpen && (
           <StyledDropdownBody>
             <ul>
-              {options.map(({ name, value }) => {
-                return (
-                  <StyledOption key={name}>
-                    <StyledLabel>
-                      {name}
-                      <StyledInputRadio
-                        type="radio"
-                        name={name}
-                        value={value}
-                        onChange={handleChange}
-                      />
-                    </StyledLabel>
-                  </StyledOption>
-                );
-              })}
+              {options.map(({ name, value }) => (
+                <StyledOption key={name}>
+                  <StyledLabel>
+                    {name}
+                    <StyledInputRadio
+                      type="radio"
+                      name={name}
+                      value={value}
+                      onChange={handleChange}
+                    />
+                  </StyledLabel>
+                </StyledOption>
+              ))}
             </ul>
           </StyledDropdownBody>
         )}
       </StyledDropdownConainer>
 
       <StyledSelect onChange={handleChange}>
-        {options.map(({ name, value }) => {
-          return (
-            <option key={value} value={value}>
-              {name}
-            </option>
-          );
-        })}
+        {options.map(({ name, value }) => (
+          <option key={value} value={value}>
+            {name}
+          </option>
+        ))}
       </StyledSelect>
     </>
   );

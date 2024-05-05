@@ -1,5 +1,9 @@
-import { Title2 } from "components/styled";
+import { H2 } from "components/styled";
 
 export const NotFound = () => {
-  return <Title2>Not found...(</Title2>;
+  return (
+    <main>
+      <H2>Not found...(</H2>
+    </main>
+  );
 };

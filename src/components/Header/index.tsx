@@ -1,4 +1,7 @@
+import { FC } from "react";
+
 import { BurgerMenu, ThemeToggle, Wrapper } from "components";
+
 import { Nav } from "./Nav";
 import {
   LargeMediaContainer,
@@ -8,7 +11,7 @@ import {
   StyledHeaderContainer,
 } from "./styled";
 
-export const Header: React.FC = () => {
+export const Header: FC = () => {
   return (
     <StyledHeader>
       <Wrapper>

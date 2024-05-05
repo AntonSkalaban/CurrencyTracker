@@ -1,11 +1,12 @@
-import React from "react";
+import { Component } from "react";
+
 import { StyledPopUp, StyledText } from "./styled";
 
 interface PopUpProps {
   message: string;
 }
 
-export class PopUp extends React.Component<PopUpProps> {
+export class PopUp extends Component<PopUpProps> {
   render() {
     return (
       <StyledPopUp>

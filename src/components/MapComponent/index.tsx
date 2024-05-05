@@ -1,10 +1,12 @@
-import React from "react";
+import { Component } from "react";
 import Map, { Marker } from "react-map-gl/maplibre";
 import { connect } from "react-redux";
-import { Title2 } from "components";
+
+import { H2 } from "components";
 import { RootState } from "store/index";
 import { banksData } from "constants/index";
 import { Bank } from "types/index";
+
 import { mapState, mapStyleUrl } from "./constants";
 
 import "maplibre-gl/dist/maplibre-gl.css";
@@ -19,7 +21,7 @@ interface MapComponentState {
   isError: boolean;
 }
 
-export class DefaultMapComponent extends React.Component<MapComponentProps, MapComponentState> {
+export class DefaultMapComponent extends Component<MapComponentProps, MapComponentState> {
   state: MapComponentState = {
     banksData: [],
     isFetching: false,
@@ -49,8 +51,8 @@ export class DefaultMapComponent extends React.Component<MapComponentProps, MapC
     const { banksData, isFetching, isError } = this.state;
     const { currency } = this.props;
 
-    if (isError) return <Title2>Error</Title2>;
-    if (isFetching) return <Title2>Fetching..</Title2>;
+    if (isError) return <H2>Error</H2>;
+    if (isFetching) return <H2>Fetching..</H2>;
 
     return (
       <Map

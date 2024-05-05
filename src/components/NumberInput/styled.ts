@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
-import { ThemeEnum } from "types/defaultTheme";
+
+import { ThemeEnum } from "types";
 
 export const StyledNumberInput = styled.input`
   height: 40px;

@@ -1,14 +1,14 @@
-import React from "react";
-import { MapComponent } from "components/MapComponent";
-import { SearchContainer } from "components/SearchContainer";
+import { Component } from "react";
 
-export class BankCard extends React.Component {
+import { MapComponent, SearchContainer } from "components";
+
+export class BankCard extends Component {
   render() {
     return (
-      <>
+      <main>
         <SearchContainer />
         <MapComponent />
-      </>
+      </main>
     );
   }
 }

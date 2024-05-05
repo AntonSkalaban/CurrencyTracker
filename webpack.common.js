@@ -22,6 +22,9 @@ module.exports = {
       types: path.resolve(__dirname, "src/types"),
       tests: path.resolve(__dirname, "src/tests"),
       utils: path.resolve(__dirname, "src/utils"),
+      api: path.resolve(__dirname, "src/api"),
+      hooks: path.resolve(__dirname, "src/hooks"),
+
     },
   },
   module: {

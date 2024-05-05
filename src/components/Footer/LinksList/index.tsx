@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, LinkItem, ListTitle, StyledLinksList } from "./styled";
 
 interface LinksListProps {
@@ -10,13 +9,11 @@ export const LinksList: React.FC<LinksListProps> = ({ title, links }) => {
     <StyledLinksList>
       <ListTitle> {title} </ListTitle>
       <ul>
-        {links.map(([name, path]) => {
-          return (
-            <LinkItem key={name}>
-              <Link href={path}>{name}</Link>
-            </LinkItem>
-          );
-        })}
+        {links.map(([name, path]) => (
+          <LinkItem key={name}>
+            <Link href={path}>{name}</Link>
+          </LinkItem>
+        ))}
       </ul>
     </StyledLinksList>
   );

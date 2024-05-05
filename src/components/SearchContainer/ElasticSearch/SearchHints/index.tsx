@@ -1,5 +1,7 @@
-import React from "react";
+import { Component } from "react";
+
 import { getHintsValues } from "utils/helpers";
+
 import { StyledSearchHintsContainer, StyledSearchHintsLi } from "./styled";
 
 interface SearchHintsProps {
@@ -12,7 +14,7 @@ interface SearchHintsState {
   suggestionData: string[];
 }
 
-export class SearchHints extends React.Component<SearchHintsProps, SearchHintsState> {
+export class SearchHints extends Component<SearchHintsProps, SearchHintsState> {
   state = { isOpen: false, suggestionData: [] };
 
   componentDidUpdate(prevProps: Readonly<SearchHintsProps>) {
@@ -35,13 +37,11 @@ export class SearchHints extends React.Component<SearchHintsProps, SearchHintsSt
         {isOpen && (
           <StyledSearchHintsContainer>
             <ul>
-              {suggestionData.map((val) => {
-                return (
-                  <StyledSearchHintsLi key={val} onClick={this.hanldeClick(val)}>
-                    {val}
-                  </StyledSearchHintsLi>
-                );
-              })}
+              {suggestionData.map((val) => (
+                <StyledSearchHintsLi key={val} onClick={this.hanldeClick(val)}>
+                  {val}
+                </StyledSearchHintsLi>
+              ))}
             </ul>
           </StyledSearchHintsContainer>
         )}

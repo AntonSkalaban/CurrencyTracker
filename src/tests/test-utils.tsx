@@ -1,11 +1,12 @@
-import React, { ReactElement } from "react";
+import { ReactElement, ReactNode } from "react";
 import { Provider } from "react-redux";
 import { render, RenderOptions } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
+
 import { store } from "store/index";
 import { darkTheme } from "constants/theme";
 
-const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+const AllTheProviders = ({ children }: { children: ReactNode }) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={darkTheme}>{children} </ThemeProvider>

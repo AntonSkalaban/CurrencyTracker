@@ -1,10 +1,16 @@
 import { BrowserRouter } from "react-router-dom";
+
 import { Header } from "components/Header";
 import { store } from "store/index";
-import { ThemeEnum } from "types/defaultTheme";
+import { ThemeEnum } from "types";
+
 import { fireEvent, render } from "./test-utils";
 
 import "jest-styled-components";
+
+jest.mock("react-map-gl/maplibre", () => ({
+  Map: () => ({}),
+}));
 
 describe("Should toggle theme", () => {
   it("Should change state in redux", () => {

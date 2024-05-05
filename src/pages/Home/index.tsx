@@ -1,16 +1,15 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { FC, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CardModalContent } from "components/CardModalContent";
-import { CardsSection } from "components/CardsSection";
-import { Modal } from "components/Modal";
-import { Title2 } from "components/styled";
+
+import { CardModalContent, CardsSection, Modal } from "components";
+import { H2 } from "components/styled";
 import { getModalStatus, toggleModal } from "store/slice";
-import { defQuotesData, defStocksData } from "constants/cardsData";
+import { defQuotesData, defStocksData } from "constants/index";
+import { getRate } from "api";
 import { cache, shouldDataUpdate, transformResponse } from "utils";
-import { getRate } from "utils/api/rateApi";
 import { ConvertResponce, CyrrencyCache } from "types";
 
-export const Home: React.FC = () => {
+export const Home: FC = () => {
   const dispatch = useDispatch();
   const [quotesRate, setQuotesRates] = useState(cache.getObj<CyrrencyCache>("quotes")?.data || []);
   const [isFetching, setIsFetching] = useState(false);
@@ -43,10 +42,10 @@ export const Home: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (isError) return <Title2>Ooops...</Title2>;
+  if (isError) return <H2>Ooops...</H2>;
 
   return (
-    <>
+    <main>
       <CardsSection title="Stocks" data={defStocksData} isFetching={isFetching} />
       <CardsSection title="Quotes" data={quotesData} isFetching={isFetching} withModal />
 
@@ -55,6 +54,6 @@ export const Home: React.FC = () => {
           <CardModalContent />
         </Modal>
       )}
-    </>
+    </main>
   );
 };

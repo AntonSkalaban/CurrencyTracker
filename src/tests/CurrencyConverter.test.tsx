@@ -1,6 +1,8 @@
 import { fireEvent, waitFor } from "@testing-library/react";
 import { setupServer } from "msw/node";
+
 import { CurrencyConverter } from "components/CardModalContent/CurrencyConverter";
+
 import { handlers } from "./mock/handlers";
 import { render } from "./test-utils";
 export const server = setupServer(...handlers);
@@ -8,6 +10,10 @@ export const server = setupServer(...handlers);
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
+
+jest.mock("react-map-gl/maplibre", () => ({
+  Map: () => ({}),
+}));
 
 describe("CurrencyConverter component", () => {
   it("displays fetching message when loading data", () => {

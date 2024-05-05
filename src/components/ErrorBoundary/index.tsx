@@ -1,5 +1,6 @@
-import React, { ErrorInfo, ReactNode } from "react";
-import { StyledP, Title2 } from "components";
+import { Component, ErrorInfo, ReactNode } from "react";
+
+import { H2, P } from "components";
 
 interface ErrorBoundaryProps {
   children?: ReactNode;
@@ -10,7 +11,7 @@ interface ErrorBoundaryState {
   errorInfo: ErrorInfo | null;
 }
 
-export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { error: null, errorInfo: null };
@@ -27,13 +28,13 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
     if (this.state.errorInfo) {
       return (
         <div>
-          <Title2>Something went wrong.</Title2>
-          <StyledP>
+          <H2>Something went wrong.</H2>
+          <P>
             {" "}
             {this.state.error && this.state.error.toString()}
             <br />
             {this.state.errorInfo.componentStack}
-          </StyledP>
+          </P>
         </div>
       );
     }

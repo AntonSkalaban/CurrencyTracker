@@ -1,6 +1,8 @@
-import React from "react";
+import { createElement } from "react";
 import { createRoot } from "react-dom/client";
+
 import { PopUp } from "components";
+
 import { Observer } from "./observer";
 
 export class popupObserver implements Observer<string> {
@@ -9,7 +11,7 @@ export class popupObserver implements Observer<string> {
   update(): void {
     if (this.timerId) return;
 
-    const popUpElement = React.createElement(PopUp, { message: "chart loaded successfully" });
+    const popUpElement = createElement(PopUp, { message: "chart loaded successfully" });
 
     const rootEl = createRoot(document.getElementById("pop-up-root") as HTMLElement);
     rootEl.render(popUpElement);

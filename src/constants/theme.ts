@@ -1,4 +1,5 @@
 import { DefaultTheme } from "styled-components";
+
 import { Theme, ThemeEnum } from "types";
 
 export const baseTheme: Theme = {

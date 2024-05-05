@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
-import { textSecondary } from "components/styled/Mixin";
+
+import { textSecondary } from "components/styled";
 
 export const StyledLinksList = styled.div`
   width: 157px;
